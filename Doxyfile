@@ -1,0 +1,58 @@
+# --- ОСНОВНЫЕ НАСТРОЙКИ ---
+PROJECT_NAME           = "VST Operating System"
+PROJECT_NUMBER         = "1.0 Stable"
+PROJECT_BRIEF          = "Сердце нашей операционки на C++"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = Russian
+# Если хочешь, чтобы в отчетах были красивые значки:
+IMAGE_PATH             = .
+
+# --- ВХОДНЫЕ ФАЙЛЫ ---
+# Сканируем текущую директорию
+INPUT                  = . README.md
+# Указываем расширения, которые нужно парсить
+FILE_PATTERNS          = *.cpp *.h *.asm *.s *.md
+RECURSIVE              = YES
+# Чтобы Doxygen понимал README.md как главную страницу
+USE_MDRIP              = YES
+MAIN_PAGE              = README.md
+
+# --- ИЗВЛЕЧЕНИЕ ДАННЫХ (МАКСИМАЛЬНОЕ) ---
+# Извлекать всё, даже если нет комментариев doxygen
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+# Показывать исходный код прямо в документации
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+# Ссылки на функции в исходниках
+REFERENCES_RELATION    = YES
+REFERENCES_LINK_SOURCE = YES
+
+# --- НАСТРОЙКИ HTML ---
+GENERATE_HTML          = YES
+HTML_EXTRA_STYLESHEET  = 
+# Включаем дерево навигации слева
+GENERATE_TREEVIEW      = YES
+# Поиск по документации
+SEARCHENGINE           = YES
+
+# --- ГРАФИКА (ТУТ НУЖЕН GRAPHVIZ) ---
+HAVE_DOT               = YES
+# Рисовать красивые графы вызовов функций
+CALL_GRAPH             = YES
+# Рисовать графы: кто вызывает эту функцию
+CALLER_GRAPH           = YES
+# Визуализировать зависимости файлов
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+# Настройки внешнего вида графов
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+DOT_TRANSPARENT        = YES
+
+# --- ЛОГИ И ОШИБКИ ---
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
