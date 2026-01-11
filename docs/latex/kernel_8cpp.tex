@@ -1,0 +1,1287 @@
+\doxysection{Файл kernel.\+cpp}
+\hypertarget{kernel_8cpp}{}\label{kernel_8cpp}\index{kernel.cpp@{kernel.cpp}}
+
+
+Сердце нашей операционки.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Граф включаемых заголовочных файлов для kernel.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{kernel_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60e}{vga\+\_\+color}} \{ \newline
+\mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774}{VGA\+\_\+\+COLOR\+\_\+\+BLACK}} = 0
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805}{VGA\+\_\+\+COLOR\+\_\+\+BLUE}} = 1
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487}{VGA\+\_\+\+COLOR\+\_\+\+GREEN}} = 2
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab}{VGA\+\_\+\+COLOR\+\_\+\+CYAN}} = 3
+, \newline
+\mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836}{VGA\+\_\+\+COLOR\+\_\+\+RED}} = 4
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee}{VGA\+\_\+\+COLOR\+\_\+\+MAGENTA}} = 5
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe}{VGA\+\_\+\+COLOR\+\_\+\+BROWN}} = 6
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREY}} = 7
+, \newline
+\mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68}{VGA\+\_\+\+COLOR\+\_\+\+DARK\+\_\+\+GREY}} = 8
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+BLUE}} = 9
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREEN}} = 10
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+CYAN}} = 11
+, \newline
+\mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+RED}} = 12
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+MAGENTA}} = 13
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+BROWN}} = 14
+, \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a}{VGA\+\_\+\+COLOR\+\_\+\+WHITE}} = 15
+ \}
+\begin{DoxyCompactList}\small\item\em Таблица цветов для VGA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}} (uint16\+\_\+t port, uint8\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em Это наши "{}руки"{} для работы с портами \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}} (uint16\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Забирает байт из порта \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{kernel_8cpp_a488d1b3600792ee3aac5be4b7e0be16b}{io\+\_\+wait}} (void)
+\begin{DoxyCompactList}\small\item\em Маленькая задержка \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{kernel_8cpp_a008e171a518fe0e0352f31b245e03875}{strlen}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Считаем длину строки \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}} (const char \texorpdfstring{$\ast$}{*}s1, const char \texorpdfstring{$\ast$}{*}s2)
+\begin{DoxyCompactList}\small\item\em Сравниваем две строки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a162352f6ed71b7dd30a52bdf9ffac698}{memset}} (void \texorpdfstring{$\ast$}{*}dest, char val, size\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Просто забиваем кусок памяти нужным символом \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e}{terminal\+\_\+initialize}} (void)
+\begin{DoxyCompactList}\small\item\em Чистим экран при запуске и ставим курсор в начало \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2}{terminal\+\_\+scroll}} ()
+\begin{DoxyCompactList}\small\item\em Скроллинг экрана \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896}{terminal\+\_\+putentryat}} (char c, uint8\+\_\+t color, size\+\_\+t x, size\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Вспомогательная штука, чтобы положить символ в конкретную точку экрана \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a0e77ef8710654966af44f69becffcd80}{terminal\+\_\+putchar}} (char c)
+\begin{DoxyCompactList}\small\item\em Основная функция печати символа \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7}{terminal\+\_\+write}} (const char \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Просто печатаем строку целиком \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\+\_\+writeln}} (const char \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Печать строки с переходом на новую \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2}{terminal\+\_\+backspace}} ()
+\begin{DoxyCompactList}\small\item\em Стираем последний символ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a459bbb389bab6b225523f3a336301395}{cmd\+\_\+reboot}} ()
+\begin{DoxyCompactList}\small\item\em Жесткий метод перезагрузки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4}{cmd\+\_\+poweroff}} ()
+\begin{DoxyCompactList}\small\item\em Попытка выключить комп \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13}{cmd\+\_\+led}} (int status)
+\begin{DoxyCompactList}\small\item\em Управление лампочками на клаве \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a442779c3d179241fe843c474fe6d1b13}{execute\+\_\+command}} ()
+\begin{DoxyCompactList}\small\item\em Наш обработчик команд \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kernel_8cpp_a6b8fb674fb359f6ae53dc9c4fb7fc6be}{kernel\+\_\+main}} (void)
+\begin{DoxyCompactList}\small\item\em Точка входа в ядро \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+static const size\+\_\+t \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\+\_\+\+WIDTH}} = 80
+\begin{DoxyCompactList}\small\item\em Ширина текстового экрана (почти везде по дефолту 80). \end{DoxyCompactList}\item 
+static const size\+\_\+t \mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\+\_\+\+HEIGHT}} = 25
+\begin{DoxyCompactList}\small\item\em Высота текстового экрана (почти везде по дефолту 25). \end{DoxyCompactList}\item 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{kernel_8cpp_a11d32f6e21e0e40be6b8175a7cc19d6d}{VGA\+\_\+\+MEMORY}} = (uint16\+\_\+t \texorpdfstring{$\ast$}{*})0x\+B8000
+\begin{DoxyCompactList}\small\item\em Волшебный адрес VGA\+\_\+\+MEMORY. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\+\_\+row}}
+\begin{DoxyCompactList}\small\item\em Текущая строка курсора \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\+\_\+column}}
+\begin{DoxyCompactList}\small\item\em Текущий столбец курсора \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\+\_\+color}}
+\begin{DoxyCompactList}\small\item\em Текущий цвет текста \end{DoxyCompactList}\item 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\+\_\+buffer}}
+\begin{DoxyCompactList}\small\item\em Указатель на буфер экрана \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{kernel_8cpp_acfe5583915d0a47629102cfd37b14c3d}{kbd\+\_\+\+US}} \mbox{[}128\mbox{]}
+\begin{DoxyCompactList}\small\item\em Карта клавиш \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\+\_\+buffer}} \mbox{[}128\mbox{]}
+\begin{DoxyCompactList}\small\item\em Буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\+\_\+len}} = 0
+\begin{DoxyCompactList}\small\item\em Длина текущей введенной команды \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Сердце нашей операционки. 
+
+так, ну погнали. Это основной файл ядра. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}}
+
+
+
+\label{doc-enum-members}
+\Hypertarget{kernel_8cpp_doc-enum-members}
+\doxysubsection{Перечисления}
+\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60e}\index{kernel.cpp@{kernel.cpp}!vga\_color@{vga\_color}}
+\index{vga\_color@{vga\_color}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{vga\_color}{vga\_color}}
+{\footnotesize\ttfamily \label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60e} 
+enum \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60e}{vga\+\_\+color}}}
+
+
+
+Таблица цветов для VGA. 
+
+Стандартные 16 цветов из эпохи DOS. \begin{DoxyEnumFields}[2]{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_BLACK@{VGA\_COLOR\_BLACK}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_BLACK@{VGA\_COLOR\_BLACK}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774} 
+VGA\+\_\+\+COLOR\+\_\+\+BLACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_BLUE@{VGA\_COLOR\_BLUE}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_BLUE@{VGA\_COLOR\_BLUE}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805} 
+VGA\+\_\+\+COLOR\+\_\+\+BLUE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_GREEN@{VGA\_COLOR\_GREEN}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_GREEN@{VGA\_COLOR\_GREEN}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487} 
+VGA\+\_\+\+COLOR\+\_\+\+GREEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_CYAN@{VGA\_COLOR\_CYAN}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_CYAN@{VGA\_COLOR\_CYAN}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab} 
+VGA\+\_\+\+COLOR\+\_\+\+CYAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_RED@{VGA\_COLOR\_RED}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_RED@{VGA\_COLOR\_RED}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836} 
+VGA\+\_\+\+COLOR\+\_\+\+RED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_MAGENTA@{VGA\_COLOR\_MAGENTA}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_MAGENTA@{VGA\_COLOR\_MAGENTA}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee} 
+VGA\+\_\+\+COLOR\+\_\+\+MAGENTA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_BROWN@{VGA\_COLOR\_BROWN}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_BROWN@{VGA\_COLOR\_BROWN}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe} 
+VGA\+\_\+\+COLOR\+\_\+\+BROWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_GREY@{VGA\_COLOR\_LIGHT\_GREY}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_GREY@{VGA\_COLOR\_LIGHT\_GREY}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_DARK\_GREY@{VGA\_COLOR\_DARK\_GREY}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_DARK\_GREY@{VGA\_COLOR\_DARK\_GREY}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68} 
+VGA\+\_\+\+COLOR\+\_\+\+DARK\+\_\+\+GREY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_BLUE@{VGA\_COLOR\_LIGHT\_BLUE}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_BLUE@{VGA\_COLOR\_LIGHT\_BLUE}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+BLUE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_GREEN@{VGA\_COLOR\_LIGHT\_GREEN}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_GREEN@{VGA\_COLOR\_LIGHT\_GREEN}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_CYAN@{VGA\_COLOR\_LIGHT\_CYAN}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_CYAN@{VGA\_COLOR\_LIGHT\_CYAN}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+CYAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_RED@{VGA\_COLOR\_LIGHT\_RED}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_RED@{VGA\_COLOR\_LIGHT\_RED}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+RED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_MAGENTA@{VGA\_COLOR\_LIGHT\_MAGENTA}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_MAGENTA@{VGA\_COLOR\_LIGHT\_MAGENTA}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+MAGENTA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_LIGHT\_BROWN@{VGA\_COLOR\_LIGHT\_BROWN}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_LIGHT\_BROWN@{VGA\_COLOR\_LIGHT\_BROWN}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694} 
+VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+BROWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VGA\_COLOR\_WHITE@{VGA\_COLOR\_WHITE}!kernel.cpp@{kernel.cpp}}\index{kernel.cpp@{kernel.cpp}!VGA\_COLOR\_WHITE@{VGA\_COLOR\_WHITE}}}\Hypertarget{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a}\label{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a} 
+VGA\+\_\+\+COLOR\+\_\+\+WHITE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00089}{89}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774}{VGA\_COLOR\_BLACK}}\ =\ 0,}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805}{VGA\_COLOR\_BLUE}}\ =\ 1,}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487}{VGA\_COLOR\_GREEN}}\ =\ 2,}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab}{VGA\_COLOR\_CYAN}}\ =\ 3,}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836}{VGA\_COLOR\_RED}}\ =\ 4,}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee}{VGA\_COLOR\_MAGENTA}}\ =\ 5,}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe}{VGA\_COLOR\_BROWN}}\ =\ 6,}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\_COLOR\_LIGHT\_GREY}}\ =\ 7,}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68}{VGA\_COLOR\_DARK\_GREY}}\ =\ 8,}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282}{VGA\_COLOR\_LIGHT\_BLUE}}\ =\ 9,}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f}{VGA\_COLOR\_LIGHT\_GREEN}}\ =\ 10,}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d}{VGA\_COLOR\_LIGHT\_CYAN}}\ =\ 11,}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d}{VGA\_COLOR\_LIGHT\_RED}}\ =\ 12,}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97}{VGA\_COLOR\_LIGHT\_MAGENTA}}\ =\ 13,}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694}{VGA\_COLOR\_LIGHT\_BROWN}}\ =\ 14,}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a}{VGA\_COLOR\_WHITE}}\ =\ 15,}
+\DoxyCodeLine{00107\ \};}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{kernel_8cpp_doc-func-members}
+\doxysubsection{Функции}
+\Hypertarget{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13}\index{kernel.cpp@{kernel.cpp}!cmd\_led@{cmd\_led}}
+\index{cmd\_led@{cmd\_led}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{cmd\_led()}{cmd\_led()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13} 
+void cmd\+\_\+led (\begin{DoxyParamCaption}\item[{int}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Управление лампочками на клаве 
+
+Caps\+Lock, Num\+Lock и т.\+д. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00301}{301}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00302\ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordflow}{while}\ ((\mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}}(0x64)\ \&\ 2)\ !=\ 0)}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00305\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x60,\ 0xED);\ \textcolor{comment}{//\ говорим,\ что\ сейчас\ будем\ менять\ состояние\ диодов}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordflow}{while}\ ((\mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}}(0x64)\ \&\ 2)\ !=\ 0)}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ ==\ 1)}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x60,\ 0x07);\ \textcolor{comment}{//\ зажечь\ всё}}
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x60,\ 0x00);\ \textcolor{comment}{//\ погасить\ всё}}
+\DoxyCodeLine{00313\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00027}{inb()}} и \mbox{\hyperlink{kernel_8cpp_source_l00016}{outb()}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4}\index{kernel.cpp@{kernel.cpp}!cmd\_poweroff@{cmd\_poweroff}}
+\index{cmd\_poweroff@{cmd\_poweroff}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{cmd\_poweroff()}{cmd\_poweroff()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4} 
+void cmd\+\_\+poweroff (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Попытка выключить комп 
+
+Работает в эмуляторах типа QEMU. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00288}{288}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00289\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x604,\ 0x2000);}
+\DoxyCodeLine{00291\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0xB004,\ 0x2000);}
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}ACPI\ Shutdown\ not\ available\ via\ Ports."{}});}
+\DoxyCodeLine{00293\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}Please\ turn\ off\ power\ manually."{}});}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}hlt"{}});}
+\DoxyCodeLine{00295\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00016}{outb()}} и \mbox{\hyperlink{kernel_8cpp_source_l00224}{terminal\+\_\+writeln()}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a459bbb389bab6b225523f3a336301395}\index{kernel.cpp@{kernel.cpp}!cmd\_reboot@{cmd\_reboot}}
+\index{cmd\_reboot@{cmd\_reboot}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{cmd\_reboot()}{cmd\_reboot()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a459bbb389bab6b225523f3a336301395} 
+void cmd\+\_\+reboot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Жесткий метод перезагрузки 
+
+Через контроллер клавиатуры. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00270}{270}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00271\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ uint8\_t\ temp;}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}cli"{}});\ \textcolor{comment}{//\ вырубаем\ прерывания,\ чтобы\ ничего\ не\ мешало}}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{00275\ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ temp\ =\ \mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}}(0x64);\ \textcolor{comment}{//\ ждем,\ пока\ контроллер\ освободится}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (temp\ \&\ 1)}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}}(0x60);}
+\DoxyCodeLine{00279\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (temp\ \&\ 2);}
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x64,\ 0xFE);\ \textcolor{comment}{//\ шлем\ команду\ на\ ресет}}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}hlt"{}});}
+\DoxyCodeLine{00282\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00027}{inb()}} и \mbox{\hyperlink{kernel_8cpp_source_l00016}{outb()}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{kernel_8cpp_a459bbb389bab6b225523f3a336301395_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a459bbb389bab6b225523f3a336301395_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a442779c3d179241fe843c474fe6d1b13}\index{kernel.cpp@{kernel.cpp}!execute\_command@{execute\_command}}
+\index{execute\_command@{execute\_command}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{execute\_command()}{execute\_command()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a442779c3d179241fe843c474fe6d1b13} 
+void execute\+\_\+command (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Наш обработчик команд 
+
+Это простейший парсер ввода. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00324}{324}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00325\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}\ ==\ 0)}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{comment}{//\ проверяем,\ что\ там\ ввел\ пользователь}}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}about"{}}))}
+\DoxyCodeLine{00332\ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d}{VGA\_COLOR\_LIGHT\_CYAN}};}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}});}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ \ VST\ Operating\ System\ Stable"{}});}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ \ FOR\ LEARNING\ ONLY"{}});}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}});}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\_COLOR\_LIGHT\_GREY}};}
+\DoxyCodeLine{00339\ \ \ \ \ \}}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}cat"{}}))}
+\DoxyCodeLine{00341\ \ \ \ \ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f}{VGA\_COLOR\_LIGHT\_GREEN}};}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ \ \ /\(\backslash\)\(\backslash\)\_/\(\backslash\)\(\backslash\)\ \ "{}});}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ \ (\ o.o\ )\ "{}});}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ \ \ >\ \string^\ <\ \ "{}});}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ \ /\ \ \string^\ \ \(\backslash\)\(\backslash\)\ "{}});}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\_COLOR\_LIGHT\_GREY}};}
+\DoxyCodeLine{00348\ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}help"{}}))}
+\DoxyCodeLine{00350\ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}Available\ commands:"{}});}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ about\ \ \ \ -\/\ OS\ info"{}});}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ ascii\ \ \ \ -\/\ Show\ art"{}});}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ clear\ \ \ \ -\/\ Clear\ screen"{}});}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ led\ 1\ \ \ \ -\/\ Turn\ ON\ keyboard\ LEDs"{}});}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ led\ 0\ \ \ \ -\/\ Turn\ OFF\ keyboard\ LEDs"{}});}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ reboot\ \ \ -\/\ Restart\ system"{}});}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}\ power\ 0\ \ -\/\ Shutdown\ (QEMU)"{}});}
+\DoxyCodeLine{00359\ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}reboot"{}}))}
+\DoxyCodeLine{00361\ \ \ \ \ \{}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}Rebooting..."{}});}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a459bbb389bab6b225523f3a336301395}{cmd\_reboot}}();}
+\DoxyCodeLine{00364\ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}power\ 0"{}}))}
+\DoxyCodeLine{00366\ \ \ \ \ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}Shutting\ down..."{}});}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4}{cmd\_poweroff}}();}
+\DoxyCodeLine{00369\ \ \ \ \ \}}
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}led\ 1"{}}))}
+\DoxyCodeLine{00371\ \ \ \ \ \{}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13}{cmd\_led}}(1);}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}LEDs\ ON"{}});}
+\DoxyCodeLine{00374\ \ \ \ \ \}}
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}led\ 0"{}}))}
+\DoxyCodeLine{00376\ \ \ \ \ \{}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13}{cmd\_led}}(0);}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}LEDs\ OFF"{}});}
+\DoxyCodeLine{00379\ \ \ \ \ \}}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}{strcmp}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}},\ \textcolor{stringliteral}{"{}clear"{}}))}
+\DoxyCodeLine{00381\ \ \ \ \ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e}{terminal\_initialize}}();}
+\DoxyCodeLine{00383\ \ \ \ \ \}}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00385\ \ \ \ \ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d}{VGA\_COLOR\_LIGHT\_RED}};}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7}{terminal\_write}}(\textcolor{stringliteral}{"{}Unknown\ command:\ "{}});}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}});}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\_COLOR\_LIGHT\_GREY}};}
+\DoxyCodeLine{00390\ \ \ \ \ \}}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{comment}{//\ после\ выполнения\ чистим\ буфер\ для\ новой\ команды}}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 128;\ i++)}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}}[i]\ =\ 0;}
+\DoxyCodeLine{00395\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}\ =\ 0;}
+\DoxyCodeLine{00396\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7}{terminal\_write}}(\textcolor{stringliteral}{"{}>\ "{}});}
+\DoxyCodeLine{00397\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00316}{cmd\+\_\+buffer}}, \mbox{\hyperlink{kernel_8cpp_source_l00301}{cmd\+\_\+led()}}, \mbox{\hyperlink{kernel_8cpp_source_l00318}{cmd\+\_\+len}}, \mbox{\hyperlink{kernel_8cpp_source_l00288}{cmd\+\_\+poweroff()}}, \mbox{\hyperlink{kernel_8cpp_source_l00270}{cmd\+\_\+reboot()}}, \mbox{\hyperlink{kernel_8cpp_source_l00062}{strcmp()}}, \mbox{\hyperlink{kernel_8cpp_source_l00123}{terminal\+\_\+color}}, \mbox{\hyperlink{kernel_8cpp_source_l00130}{terminal\+\_\+initialize()}}, \mbox{\hyperlink{kernel_8cpp_source_l00215}{terminal\+\_\+write()}}, \mbox{\hyperlink{kernel_8cpp_source_l00224}{terminal\+\_\+writeln()}}, \mbox{\hyperlink{kernel_8cpp_source_l00102}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+CYAN}}, \mbox{\hyperlink{kernel_8cpp_source_l00101}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREEN}}, \mbox{\hyperlink{kernel_8cpp_source_l00098}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREY}} и \mbox{\hyperlink{kernel_8cpp_source_l00103}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+RED}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a442779c3d179241fe843c474fe6d1b13_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{kernel_8cpp_a442779c3d179241fe843c474fe6d1b13_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}\index{kernel.cpp@{kernel.cpp}!inb@{inb}}
+\index{inb@{inb}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{inb()}{inb()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a0223c8898dfec29069879dc51076e28a} 
+uint8\+\_\+t inb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Забирает байт из порта 
+
+Так мы узнаем, какую клавишу нажали. 
+\begin{DoxyParams}{Аргументы}
+{\em port} & Порт устройства \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Считанный байт 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00027}{27}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ uint8\_t\ ret;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}inb\ \%1,\ \%0"{}}\ :\ \textcolor{stringliteral}{"{}=a"{}}(ret)\ :\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a0223c8898dfec29069879dc51076e28a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a488d1b3600792ee3aac5be4b7e0be16b}\index{kernel.cpp@{kernel.cpp}!io\_wait@{io\_wait}}
+\index{io\_wait@{io\_wait}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{io\_wait()}{io\_wait()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a488d1b3600792ee3aac5be4b7e0be16b} 
+void io\+\_\+wait (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Маленькая задержка 
+
+Иногда железо слишком медленное для проца. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00038}{38}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x80,\ 0);}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00016}{outb()}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{kernel_8cpp_a488d1b3600792ee3aac5be4b7e0be16b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a6b8fb674fb359f6ae53dc9c4fb7fc6be}\index{kernel.cpp@{kernel.cpp}!kernel\_main@{kernel\_main}}
+\index{kernel\_main@{kernel\_main}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{kernel\_main()}{kernel\_main()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a6b8fb674fb359f6ae53dc9c4fb7fc6be} 
+void kernel\+\_\+main (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Точка входа в ядро 
+
+Именно сюда GRUB передаст управление после загрузки. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00403}{403}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00404\ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{comment}{//\ стартуем\ экран}}
+\DoxyCodeLine{00406\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e}{terminal\_initialize}}();}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \ \ \textcolor{comment}{//\ приветствие}}
+\DoxyCodeLine{00409\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a}{VGA\_COLOR\_WHITE}};}
+\DoxyCodeLine{00410\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}VST\ Operating\ System"{}});}
+\DoxyCodeLine{00411\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}Type\ 'help'\ for\ commands."{}});}
+\DoxyCodeLine{00412\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}{terminal\_writeln}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}});}
+\DoxyCodeLine{00413\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\_COLOR\_LIGHT\_GREY}};}
+\DoxyCodeLine{00414\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7}{terminal\_write}}(\textcolor{stringliteral}{"{}>\ "{}});}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{comment}{//\ основной\ цикл,\ тут\ и\ живет\ система}}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)}
+\DoxyCodeLine{00418\ \ \ \ \ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ опрашиваем\ порт\ клавиатуры\ на\ нажатие\ чего\ либо}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}}(0x64)\ \&\ 1)}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ scancode\ =\ \mbox{\hyperlink{kernel_8cpp_a0223c8898dfec29069879dc51076e28a}{inb}}(0x60);}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ если\ старший\ бит\ 1,\ значит\ клавишу\ отпустили,\ нам\ это\ пока\ не\ интересно}}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scancode\ \&\ 0x80)}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ получаем\ символ\ из\ нашей\ таблицы}}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ \mbox{\hyperlink{kernel_8cpp_acfe5583915d0a47629102cfd37b14c3d}{kbd\_US}}[scancode];}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \textcolor{comment}{//\ нажали\ энтер\ -\/\ выполняем}}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a442779c3d179241fe843c474fe6d1b13}{execute\_command}}();}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)b'})\ \textcolor{comment}{//\ нажали\ бакспейс\ -\/\ стираем}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}\ >\ 0)}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2}{terminal\_backspace}}();}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}}[-\/-\/\mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}]\ =\ 0;}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (c\ >\ 0)\ \textcolor{comment}{//\ обычная\ буква\ -\/\ пишем\ в\ буфер\ и\ на\ экран}}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}\ <\ 79)}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0e77ef8710654966af44f69becffcd80}{terminal\_putchar}}(c);}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}}[\mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}++]\ =\ c;}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}{cmd\_buffer}}[\mbox{\hyperlink{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}{cmd\_len}}]\ =\ 0;}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00456\ \ \ \ \ \}}
+\DoxyCodeLine{00457\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00316}{cmd\+\_\+buffer}}, \mbox{\hyperlink{kernel_8cpp_source_l00318}{cmd\+\_\+len}}, \mbox{\hyperlink{kernel_8cpp_source_l00324}{execute\+\_\+command()}}, \mbox{\hyperlink{kernel_8cpp_source_l00027}{inb()}}, \mbox{\hyperlink{kernel_8cpp_source_l00259}{kbd\+\_\+\+US}}, \mbox{\hyperlink{kernel_8cpp_source_l00234}{terminal\+\_\+backspace()}}, \mbox{\hyperlink{kernel_8cpp_source_l00123}{terminal\+\_\+color}}, \mbox{\hyperlink{kernel_8cpp_source_l00130}{terminal\+\_\+initialize()}}, \mbox{\hyperlink{kernel_8cpp_source_l00181}{terminal\+\_\+putchar()}}, \mbox{\hyperlink{kernel_8cpp_source_l00215}{terminal\+\_\+write()}}, \mbox{\hyperlink{kernel_8cpp_source_l00224}{terminal\+\_\+writeln()}}, \mbox{\hyperlink{kernel_8cpp_source_l00098}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREY}} и \mbox{\hyperlink{kernel_8cpp_source_l00106}{VGA\+\_\+\+COLOR\+\_\+\+WHITE}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a6b8fb674fb359f6ae53dc9c4fb7fc6be_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a162352f6ed71b7dd30a52bdf9ffac698}\index{kernel.cpp@{kernel.cpp}!memset@{memset}}
+\index{memset@{memset}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{memset()}{memset()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a162352f6ed71b7dd30a52bdf9ffac698} 
+void memset (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dest}{, }\item[{char}]{val}{, }\item[{size\+\_\+t}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Просто забиваем кусок памяти нужным символом 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em dest} & Адрес начала \\
+\hline
+{\em val} & Чем забиваем \\
+\hline
+{\em count} & Сколько байт \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00078}{78}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{char}\ *temp\ =\ (\textcolor{keywordtype}{char}\ *)dest;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ count\ !=\ 0;\ count-\/-\/)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ *temp++\ =\ val;}
+\DoxyCodeLine{00083\ \}}
+
+\end{DoxyCode}
+\Hypertarget{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}\index{kernel.cpp@{kernel.cpp}!outb@{outb}}
+\index{outb@{outb}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{outb()}{outb()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f} 
+void outb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{port}{, }\item[{uint8\+\_\+t}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Это наши "{}руки"{} для работы с портами 
+
+Процессор общается с железками через них. 
+\begin{DoxyParams}{Аргументы}
+{\em port} & Порт устройства \\
+\hline
+{\em val} & Байт, который шлем (например, скомандовать клавиатуре мигнуть лампочкой) \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00016}{16}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}outb\ \%0,\ \%1"{}}\ :\ :\ \textcolor{stringliteral}{"{}a"{}}(val),\ \textcolor{stringliteral}{"{}Nd"{}}(port));}
+\DoxyCodeLine{00019\ \}}
+
+\end{DoxyCode}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85}\index{kernel.cpp@{kernel.cpp}!strcmp@{strcmp}}
+\index{strcmp@{strcmp}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{strcmp()}{strcmp()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85} 
+bool strcmp (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{s1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{s2}{}\end{DoxyParamCaption})}
+
+
+
+Сравниваем две строки 
+
+Чтобы понимать, какую команду ввел юзер. \begin{DoxyReturn}{Возвращает}
+true если строки одинаковые 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00062}{62}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{while}\ (*s1\ \&\&\ (*s1\ ==\ *s2))}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ s1++;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ s2++;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ *s1\ ==\ *s2;}
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a166db80b274b2f9d796babb771e0ef85_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a008e171a518fe0e0352f31b245e03875}\index{kernel.cpp@{kernel.cpp}!strlen@{strlen}}
+\index{strlen@{strlen}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{strlen()}{strlen()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a008e171a518fe0e0352f31b245e03875} 
+size\+\_\+t strlen (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Считаем длину строки 
+
+Пока нет стандартной библиотеки, пишем всё сами. 
+\begin{DoxyParams}{Аргументы}
+{\em str} & Указатель на строку \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Количество символов 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00049}{49}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{while}\ (str[len])}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ len++;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ len;}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a008e171a518fe0e0352f31b245e03875_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2}\index{kernel.cpp@{kernel.cpp}!terminal\_backspace@{terminal\_backspace}}
+\index{terminal\_backspace@{terminal\_backspace}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_backspace()}{terminal\_backspace()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2} 
+void terminal\+\_\+backspace (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Стираем последний символ 
+
+Нужно для работы Backspace. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00234}{234}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00235\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ ==\ 0\ \&\&\ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ >\ 0)}
+\DoxyCodeLine{00237\ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}-\/-\/;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ =\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}};}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ >\ 0)}
+\DoxyCodeLine{00242\ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}-\/-\/;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896}{terminal\_putentryat}}(\textcolor{charliteral}{'\ '},\ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}},\ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}},\ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}});}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ не\ забываем\ вернуть\ мигающий\ курсор\ назад}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ uint16\_t\ pos\ =\ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}};}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D4,\ 0x0F);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D5,\ (uint8\_t)(pos\ \&\ 0xFF));}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D4,\ 0x0E);}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D5,\ (uint8\_t)((pos\ >>\ 8)\ \&\ 0xFF));}
+\DoxyCodeLine{00252\ \ \ \ \ \}}
+\DoxyCodeLine{00253\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00016}{outb()}}, \mbox{\hyperlink{kernel_8cpp_source_l00123}{terminal\+\_\+color}}, \mbox{\hyperlink{kernel_8cpp_source_l00121}{terminal\+\_\+column}}, \mbox{\hyperlink{kernel_8cpp_source_l00171}{terminal\+\_\+putentryat()}}, \mbox{\hyperlink{kernel_8cpp_source_l00119}{terminal\+\_\+row}} и \mbox{\hyperlink{kernel_8cpp_source_l00110}{VGA\+\_\+\+WIDTH}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e}\index{kernel.cpp@{kernel.cpp}!terminal\_initialize@{terminal\_initialize}}
+\index{terminal\_initialize@{terminal\_initialize}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_initialize()}{terminal\_initialize()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e} 
+void terminal\+\_\+initialize (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Чистим экран при запуске и ставим курсор в начало 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00130}{130}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ =\ 0;}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ =\ 0;}
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ =\ \mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d}{VGA\_COLOR\_LIGHT\_GREY}}\ |\ (\mbox{\hyperlink{kernel_8cpp_abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774}{VGA\_COLOR\_BLACK}}\ <<\ 4);}
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\_buffer}}\ =\ \mbox{\hyperlink{kernel_8cpp_a11d32f6e21e0e40be6b8175a7cc19d6d}{VGA\_MEMORY}};}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ y\ =\ 0;\ y\ <\ \mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\_HEIGHT}};\ y++)}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ x\ =\ 0;\ x\ <\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}};\ x++)}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index\ =\ y\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ x;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ забиваем\ всё\ пробелами}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\_buffer}}[index]\ =\ (uint16\_t)\textcolor{charliteral}{'\ '}\ |\ (uint16\_t)\mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ <<\ 8;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00125}{terminal\+\_\+buffer}}, \mbox{\hyperlink{kernel_8cpp_source_l00123}{terminal\+\_\+color}}, \mbox{\hyperlink{kernel_8cpp_source_l00121}{terminal\+\_\+column}}, \mbox{\hyperlink{kernel_8cpp_source_l00119}{terminal\+\_\+row}}, \mbox{\hyperlink{kernel_8cpp_source_l00091}{VGA\+\_\+\+COLOR\+\_\+\+BLACK}}, \mbox{\hyperlink{kernel_8cpp_source_l00098}{VGA\+\_\+\+COLOR\+\_\+\+LIGHT\+\_\+\+GREY}}, \mbox{\hyperlink{kernel_8cpp_source_l00112}{VGA\+\_\+\+HEIGHT}}, \mbox{\hyperlink{kernel_8cpp_source_l00116}{VGA\+\_\+\+MEMORY}} и \mbox{\hyperlink{kernel_8cpp_source_l00110}{VGA\+\_\+\+WIDTH}}.
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a0e77ef8710654966af44f69becffcd80}\index{kernel.cpp@{kernel.cpp}!terminal\_putchar@{terminal\_putchar}}
+\index{terminal\_putchar@{terminal\_putchar}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_putchar()}{terminal\_putchar()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a0e77ef8710654966af44f69becffcd80} 
+void terminal\+\_\+putchar (\begin{DoxyParamCaption}\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Основная функция печати символа 
+
+Она обрабатывает перевод строки и двигает курсор. 
+\begin{DoxyItemize}
+\item \begin{DoxyNote}{Заметки}
+Тут магия
+\end{DoxyNote}
+Говорим видеокарте передвинуть мигающую палочку вслед за текстом.
+\end{DoxyItemize}
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00181}{181}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \textcolor{comment}{//\ если\ встретили\ энтер,\ прыгаем\ на\ новую\ строку}}
+\DoxyCodeLine{00184\ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ =\ 0;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++\mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ ==\ \mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\_HEIGHT}})}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2}{terminal\_scroll}}();}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00189\ \ \ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{comment}{//\ рисуем\ символ}}
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896}{terminal\_putentryat}}(c,\ \mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}},\ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}},\ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}});}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{comment}{//\ двигаем\ координату\ вправо}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (++\mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ ==\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}})}
+\DoxyCodeLine{00196\ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}}\ =\ 0;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++\mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ ==\ \mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\_HEIGHT}})}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2}{terminal\_scroll}}();}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00205\ \ \ \ \ uint16\_t\ pos\ =\ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ \mbox{\hyperlink{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}{terminal\_column}};}
+\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D4,\ 0x0F);}
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D5,\ (uint8\_t)(pos\ \&\ 0xFF));}
+\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D4,\ 0x0E);}
+\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f}{outb}}(0x3D5,\ (uint8\_t)((pos\ >>\ 8)\ \&\ 0xFF));}
+\DoxyCodeLine{00210\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00016}{outb()}}, \mbox{\hyperlink{kernel_8cpp_source_l00123}{terminal\+\_\+color}}, \mbox{\hyperlink{kernel_8cpp_source_l00121}{terminal\+\_\+column}}, \mbox{\hyperlink{kernel_8cpp_source_l00171}{terminal\+\_\+putentryat()}}, \mbox{\hyperlink{kernel_8cpp_source_l00119}{terminal\+\_\+row}}, \mbox{\hyperlink{kernel_8cpp_source_l00151}{terminal\+\_\+scroll()}}, \mbox{\hyperlink{kernel_8cpp_source_l00112}{VGA\+\_\+\+HEIGHT}} и \mbox{\hyperlink{kernel_8cpp_source_l00110}{VGA\+\_\+\+WIDTH}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{kernel_8cpp_a0e77ef8710654966af44f69becffcd80_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a0e77ef8710654966af44f69becffcd80_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896}\index{kernel.cpp@{kernel.cpp}!terminal\_putentryat@{terminal\_putentryat}}
+\index{terminal\_putentryat@{terminal\_putentryat}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_putentryat()}{terminal\_putentryat()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896} 
+void terminal\+\_\+putentryat (\begin{DoxyParamCaption}\item[{char}]{c}{, }\item[{uint8\+\_\+t}]{color}{, }\item[{size\+\_\+t}]{x}{, }\item[{size\+\_\+t}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Вспомогательная штука, чтобы положить символ в конкретную точку экрана 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00171}{171}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00172\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index\ =\ y\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ x;}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\_buffer}}[index]\ =\ (uint16\_t)c\ |\ (uint16\_t)color\ <<\ 8;}
+\DoxyCodeLine{00175\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00125}{terminal\+\_\+buffer}} и \mbox{\hyperlink{kernel_8cpp_source_l00110}{VGA\+\_\+\+WIDTH}}.
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2}\index{kernel.cpp@{kernel.cpp}!terminal\_scroll@{terminal\_scroll}}
+\index{terminal\_scroll@{terminal\_scroll}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_scroll()}{terminal\_scroll()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2} 
+void terminal\+\_\+scroll (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Скроллинг экрана 
+
+Если дошли до низа экрана, надо всё сдвинуть вверх. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00151}{151}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00152\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ y\ =\ 0;\ y\ <\ \mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\_HEIGHT}}\ -\/\ 1;\ y++)}
+\DoxyCodeLine{00154\ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ x\ =\ 0;\ x\ <\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}};\ x++)}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\_buffer}}[y\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ x]\ =\ \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\_buffer}}[(y\ +\ 1)\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ x];}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ последнюю\ строчку\ чистим}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ x\ =\ 0;\ x\ <\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}};\ x++)}
+\DoxyCodeLine{00162\ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}{terminal\_buffer}}[(\mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\_HEIGHT}}\ -\/\ 1)\ *\ \mbox{\hyperlink{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}{VGA\_WIDTH}}\ +\ x]\ =\ (uint16\_t)\textcolor{charliteral}{'\ '}\ |\ (uint16\_t)\mbox{\hyperlink{kernel_8cpp_a0165452ad102b2a781847d6616407976}{terminal\_color}}\ <<\ 8;}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}{terminal\_row}}\ =\ \mbox{\hyperlink{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}{VGA\_HEIGHT}}\ -\/\ 1;}
+\DoxyCodeLine{00166\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00125}{terminal\+\_\+buffer}}, \mbox{\hyperlink{kernel_8cpp_source_l00123}{terminal\+\_\+color}}, \mbox{\hyperlink{kernel_8cpp_source_l00119}{terminal\+\_\+row}}, \mbox{\hyperlink{kernel_8cpp_source_l00112}{VGA\+\_\+\+HEIGHT}} и \mbox{\hyperlink{kernel_8cpp_source_l00110}{VGA\+\_\+\+WIDTH}}.
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7}\index{kernel.cpp@{kernel.cpp}!terminal\_write@{terminal\_write}}
+\index{terminal\_write@{terminal\_write}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_write()}{terminal\_write()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7} 
+void terminal\+\_\+write (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Просто печатаем строку целиком 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00215}{215}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00216\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{kernel_8cpp_a008e171a518fe0e0352f31b245e03875}{strlen}}(data);\ i++)}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0e77ef8710654966af44f69becffcd80}{terminal\_putchar}}(data[i]);}
+\DoxyCodeLine{00219\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00049}{strlen()}} и \mbox{\hyperlink{kernel_8cpp_source_l00181}{terminal\+\_\+putchar()}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1}\index{kernel.cpp@{kernel.cpp}!terminal\_writeln@{terminal\_writeln}}
+\index{terminal\_writeln@{terminal\_writeln}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_writeln()}{terminal\_writeln()}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1} 
+void terminal\+\_\+writeln (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Печать строки с переходом на новую 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00224}{224}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00225\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7}{terminal\_write}}(data);}
+\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{kernel_8cpp_a0e77ef8710654966af44f69becffcd80}{terminal\_putchar}}(\textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00228\ \}}
+
+\end{DoxyCode}
+
+
+Перекрестные ссылки \mbox{\hyperlink{kernel_8cpp_source_l00181}{terminal\+\_\+putchar()}} и \mbox{\hyperlink{kernel_8cpp_source_l00215}{terminal\+\_\+write()}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{kernel_8cpp_doc-var-members}
+\doxysubsection{Переменные}
+\Hypertarget{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5}\index{kernel.cpp@{kernel.cpp}!cmd\_buffer@{cmd\_buffer}}
+\index{cmd\_buffer@{cmd\_buffer}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{cmd\_buffer}{cmd\_buffer}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a2eafa31c0fdd24b7c2acf8d9547767b5} 
+char cmd\+\_\+buffer\mbox{[}128\mbox{]}}
+
+
+
+Буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00316}{316}}
+
+\Hypertarget{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339}\index{kernel.cpp@{kernel.cpp}!cmd\_len@{cmd\_len}}
+\index{cmd\_len@{cmd\_len}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{cmd\_len}{cmd\_len}}
+{\footnotesize\ttfamily \label{kernel_8cpp_adbfc6f7934b1232f3d68253d0e93a339} 
+int cmd\+\_\+len = 0}
+
+
+
+Длина текущей введенной команды 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00318}{318}}
+
+\Hypertarget{kernel_8cpp_acfe5583915d0a47629102cfd37b14c3d}\index{kernel.cpp@{kernel.cpp}!kbd\_US@{kbd\_US}}
+\index{kbd\_US@{kbd\_US}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{kbd\_US}{kbd\_US}}
+{\footnotesize\ttfamily \label{kernel_8cpp_acfe5583915d0a47629102cfd37b14c3d} 
+char kbd\+\_\+\+US\mbox{[}128\mbox{]}}
+
+{\bfseries Инициализатор}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ 0,\ 27,\ \textcolor{charliteral}{'1'},\ \textcolor{charliteral}{'2'},\ \textcolor{charliteral}{'3'},\ \textcolor{charliteral}{'4'},\ \textcolor{charliteral}{'5'},\ \textcolor{charliteral}{'6'},\ \textcolor{charliteral}{'7'},\ \textcolor{charliteral}{'8'},\ \textcolor{charliteral}{'9'},\ \textcolor{charliteral}{'0'},\ \textcolor{charliteral}{'-\/'},\ \textcolor{charliteral}{'='},\ \textcolor{charliteral}{'\(\backslash\)b'},}
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'\(\backslash\)t'},\ \textcolor{charliteral}{'q'},\ \textcolor{charliteral}{'w'},\ \textcolor{charliteral}{'e'},\ \textcolor{charliteral}{'r'},\ \textcolor{charliteral}{'t'},\ \textcolor{charliteral}{'y'},\ \textcolor{charliteral}{'u'},\ \textcolor{charliteral}{'i'},\ \textcolor{charliteral}{'o'},\ \textcolor{charliteral}{'p'},\ \textcolor{charliteral}{'['},\ \textcolor{charliteral}{']'},\ \textcolor{charliteral}{'\(\backslash\)n'},}
+\DoxyCodeLine{\ \ \ \ 0,\ \textcolor{charliteral}{'a'},\ \textcolor{charliteral}{'s'},\ \textcolor{charliteral}{'d'},\ \textcolor{charliteral}{'f'},\ \textcolor{charliteral}{'g'},\ \textcolor{charliteral}{'h'},\ \textcolor{charliteral}{'j'},\ \textcolor{charliteral}{'k'},\ \textcolor{charliteral}{'l'},\ \textcolor{charliteral}{';'},\ \textcolor{charliteral}{'\(\backslash\)''},\ \textcolor{charliteral}{'`'},\ 0,}
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \textcolor{charliteral}{'z'},\ \textcolor{charliteral}{'x'},\ \textcolor{charliteral}{'c'},\ \textcolor{charliteral}{'v'},\ \textcolor{charliteral}{'b'},\ \textcolor{charliteral}{'n'},\ \textcolor{charliteral}{'m'},\ \textcolor{charliteral}{','},\ \textcolor{charliteral}{'.'},\ \textcolor{charliteral}{'/'},\ 0,\ \textcolor{charliteral}{'*'},\ 0,\ \textcolor{charliteral}{'\ '},}
+\DoxyCodeLine{\ \ \ \ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ \textcolor{charliteral}{'-\/'},\ 0,\ 0,\ 0,\ \textcolor{charliteral}{'+'},\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\}}
+
+\end{DoxyCode}
+
+
+Карта клавиш 
+
+Железо присылает номер кнопки, а мы превращаем его в букву. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00259}{259}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00260\ \ \ \ \ 0,\ 27,\ \textcolor{charliteral}{'1'},\ \textcolor{charliteral}{'2'},\ \textcolor{charliteral}{'3'},\ \textcolor{charliteral}{'4'},\ \textcolor{charliteral}{'5'},\ \textcolor{charliteral}{'6'},\ \textcolor{charliteral}{'7'},\ \textcolor{charliteral}{'8'},\ \textcolor{charliteral}{'9'},\ \textcolor{charliteral}{'0'},\ \textcolor{charliteral}{'-\/'},\ \textcolor{charliteral}{'='},\ \textcolor{charliteral}{'\(\backslash\)b'},}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{charliteral}{'\(\backslash\)t'},\ \textcolor{charliteral}{'q'},\ \textcolor{charliteral}{'w'},\ \textcolor{charliteral}{'e'},\ \textcolor{charliteral}{'r'},\ \textcolor{charliteral}{'t'},\ \textcolor{charliteral}{'y'},\ \textcolor{charliteral}{'u'},\ \textcolor{charliteral}{'i'},\ \textcolor{charliteral}{'o'},\ \textcolor{charliteral}{'p'},\ \textcolor{charliteral}{'['},\ \textcolor{charliteral}{']'},\ \textcolor{charliteral}{'\(\backslash\)n'},}
+\DoxyCodeLine{00262\ \ \ \ \ 0,\ \textcolor{charliteral}{'a'},\ \textcolor{charliteral}{'s'},\ \textcolor{charliteral}{'d'},\ \textcolor{charliteral}{'f'},\ \textcolor{charliteral}{'g'},\ \textcolor{charliteral}{'h'},\ \textcolor{charliteral}{'j'},\ \textcolor{charliteral}{'k'},\ \textcolor{charliteral}{'l'},\ \textcolor{charliteral}{';'},\ \textcolor{charliteral}{'\(\backslash\)''},\ \textcolor{charliteral}{'`'},\ 0,}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'},\ \textcolor{charliteral}{'z'},\ \textcolor{charliteral}{'x'},\ \textcolor{charliteral}{'c'},\ \textcolor{charliteral}{'v'},\ \textcolor{charliteral}{'b'},\ \textcolor{charliteral}{'n'},\ \textcolor{charliteral}{'m'},\ \textcolor{charliteral}{','},\ \textcolor{charliteral}{'.'},\ \textcolor{charliteral}{'/'},\ 0,\ \textcolor{charliteral}{'*'},\ 0,\ \textcolor{charliteral}{'\ '},}
+\DoxyCodeLine{00264\ \ \ \ \ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ \textcolor{charliteral}{'-\/'},\ 0,\ 0,\ 0,\ \textcolor{charliteral}{'+'},\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0\};}
+
+\end{DoxyCode}
+\Hypertarget{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e}\index{kernel.cpp@{kernel.cpp}!terminal\_buffer@{terminal\_buffer}}
+\index{terminal\_buffer@{terminal\_buffer}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_buffer}{terminal\_buffer}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a47e72657e89c79ddc7393b941112a28e} 
+uint16\+\_\+t\texorpdfstring{$\ast$}{*} terminal\+\_\+buffer}
+
+
+
+Указатель на буфер экрана 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00125}{125}}
+
+\Hypertarget{kernel_8cpp_a0165452ad102b2a781847d6616407976}\index{kernel.cpp@{kernel.cpp}!terminal\_color@{terminal\_color}}
+\index{terminal\_color@{terminal\_color}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_color}{terminal\_color}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a0165452ad102b2a781847d6616407976} 
+uint8\+\_\+t terminal\+\_\+color}
+
+
+
+Текущий цвет текста 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00123}{123}}
+
+\Hypertarget{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9}\index{kernel.cpp@{kernel.cpp}!terminal\_column@{terminal\_column}}
+\index{terminal\_column@{terminal\_column}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_column}{terminal\_column}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a520603ae2a8f2d5cee740e42776cd4a9} 
+size\+\_\+t terminal\+\_\+column}
+
+
+
+Текущий столбец курсора 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00121}{121}}
+
+\Hypertarget{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58}\index{kernel.cpp@{kernel.cpp}!terminal\_row@{terminal\_row}}
+\index{terminal\_row@{terminal\_row}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{terminal\_row}{terminal\_row}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a7b2081d954cde4b480d57878e4b3af58} 
+size\+\_\+t terminal\+\_\+row}
+
+
+
+Текущая строка курсора 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00119}{119}}
+
+\Hypertarget{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04}\index{kernel.cpp@{kernel.cpp}!VGA\_HEIGHT@{VGA\_HEIGHT}}
+\index{VGA\_HEIGHT@{VGA\_HEIGHT}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{VGA\_HEIGHT}{VGA\_HEIGHT}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a9d0a1e1ab3a08dc955ddb744de23ab04} 
+const size\+\_\+t VGA\+\_\+\+HEIGHT = 25\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Высота текстового экрана (почти везде по дефолту 25). 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00112}{112}}
+
+\Hypertarget{kernel_8cpp_a11d32f6e21e0e40be6b8175a7cc19d6d}\index{kernel.cpp@{kernel.cpp}!VGA\_MEMORY@{VGA\_MEMORY}}
+\index{VGA\_MEMORY@{VGA\_MEMORY}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{VGA\_MEMORY}{VGA\_MEMORY}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a11d32f6e21e0e40be6b8175a7cc19d6d} 
+uint16\+\_\+t\texorpdfstring{$\ast$}{*} const VGA\+\_\+\+MEMORY = (uint16\+\_\+t \texorpdfstring{$\ast$}{*})0x\+B8000}
+
+
+
+Волшебный адрес VGA\+\_\+\+MEMORY. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+Сюда надо писать буквы, чтобы они появились на мониторе. 
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00116}{116}}
+
+\Hypertarget{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc}\index{kernel.cpp@{kernel.cpp}!VGA\_WIDTH@{VGA\_WIDTH}}
+\index{VGA\_WIDTH@{VGA\_WIDTH}!kernel.cpp@{kernel.cpp}}
+\doxysubsubsection{\texorpdfstring{VGA\_WIDTH}{VGA\_WIDTH}}
+{\footnotesize\ttfamily \label{kernel_8cpp_a7bb2c25c4aa910dc8f58815dbb3c67dc} 
+const size\+\_\+t VGA\+\_\+\+WIDTH = 80\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Ширина текстового экрана (почти везде по дефолту 80). 
+
+
+
+См. определение в файле \mbox{\hyperlink{kernel_8cpp_source}{kernel.\+cpp}} строка \mbox{\hyperlink{kernel_8cpp_source_l00110}{110}}
+

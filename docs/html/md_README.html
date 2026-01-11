@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VST Operating System: VSTOS (Valentin Stars Operating System)</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VST Operating System<span id="projectnumber">&#160;1.0 Stable</span>
+   </div>
+   <div id="projectbrief">Сердце нашей операционки на C++</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('md_README.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">VSTOS (Valentin Stars Operating System) </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<p><img src="screenshots/1.png" alt="VSTOS Demo" class="inline"/></p>
+<p><b>VSTOS</b> — это легковесная 32-битная операционная система с монолитным ядром, написанная на C++ и ассемблере x86. Проект создан как образовательная площадка для изучения низкоуровневой разработки и как готовый шаблон (boilerplate) для тех, кто хочет начать свой путь в создании OS.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+Основные возможности</h1>
+<ul>
+<li><b>Собственное Ядро:</b> Написано на C++ с использованием <span class="tt">-ffreestanding</span>.</li>
+<li><b>VGA Драйвер:</b> Полноценный вывод текста на экран, поддержка цветов, скроллинг и управление аппаратным курсором.</li>
+<li><b>Драйвер клавиатуры:</b> Обработка скан-кодов через порты ввода-вывода (<span class="tt">0x60</span>, <span class="tt">0x64</span>).</li>
+<li><b>Интерактивный Shell:</b> Поддержка команд (<span class="tt">help</span>, <span class="tt">about</span>, <span class="tt">clear</span>, <span class="tt">ascii</span>).</li>
+<li><b>Управление питанием:</b> Команды перезагрузки (<span class="tt">reboot</span>) и программного выключения для QEMU.</li>
+<li><b>Hardware Interaction:</b> Прямое управление светодиодами клавиатуры (Caps/Num/Scroll Lock).</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Технологический стек</h1>
+<ul>
+<li><b>Языки:</b> C++ (Kernel), Assembly x86 (Bootloader).</li>
+<li><b>Загрузчик:</b> Multiboot-compliant (GRUB).</li>
+<li><b>Инструменты:</b> GCC (g++), NASM, LD (Linker).</li>
+<li><b>Среда тестирования:</b> QEMU / Bochs.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Как скомпилировать и запустить</h1>
+<p>Для сборки вам понадобится <span class="tt">gcc-multilib</span>, <span class="tt">nasm</span> и <span class="tt">grub-common</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+1. Сборка компонентов</h2>
+<div class="fragment"><div class="line"># Компиляция ассемблерного загрузчика</div>
+<div class="line">nasm -f elf32 boot.asm -o boot.o</div>
+<div class="line"> </div>
+<div class="line"># Компиляция ядра C++</div>
+<div class="line">g++ -m32 -c kernel.cpp -o kernel.o -ffreestanding -O2 -fno-stack-protector -fno-rtti -fno-exceptions</div>
+<div class="line"> </div>
+<div class="line"># Линковка в исполняемый бинарный файл</div>
+<div class="line">ld -m elf_i386 -T linker.ld -o VST_OS.bin boot.o kernel.o</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+2. Создание ISO образа</h2>
+<div class="fragment"><div class="line">mkdir -p iso/boot/grub</div>
+<div class="line">cp VST_OS.bin iso/boot/</div>
+<div class="line"># Создание конфигурации GRUB и генерация образа</div>
+<div class="line">grub-mkrescue -o VST_OS.iso iso</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+3. Запуск в QEMU</h2>
+<div class="fragment"><div class="line">qemu-system-i386 -cdrom VST_OS.iso</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Чему я научился (Lessons Learned)</h1>
+<p><b>Проблема с обработкой прерываний и вводом:</b> Одной из главных сложностей была реализация корректного ввода с клавиатуры. В начале разработки при нажатии одной клавиши символ выводился бесконечно или система зависала. <b>Решение:</b> Я изучил работу контроллера клавиатуры 8042 и реализовал проверку статусного регистра порта <span class="tt">0x64</span> (проверка бита <span class="tt">0</span> перед чтением данных из <span class="tt">0x60</span>). Также пришлось вручную реализовать таблицу маппинга скан-кодов в символы ASCII, что дало понимание того, как аппаратура общается с драйвером.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+Планы на будущее</h1>
+<ul>
+<li>[ ] Реализация GDT (Global Descriptor Table) и IDT (Interrupt Descriptor Table).</li>
+<li>[ ] Поддержка динамической памяти (Memory Allocator).</li>
+<li>[ ] Файловая система (например, простая FAT или RAMDisk).</li>
+<li>[ ] Больше примеров работы с ассемблерными вставками (Inline ASM) для прямого доступа к регистрам CPU.</li>
+</ul>
+<hr  />
+<p> <b>Разработчик:</b> Valentin Stars vstbio.t.me <br  />
+ <b>Цель проекта:</b> Демонстрация работы Hardware C++ и основ системного программирования. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

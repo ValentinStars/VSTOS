@@ -1,0 +1,9 @@
+<map id="terminal_putchar" name="terminal_putchar">
+<area shape="rect" id="Node000001" title="Основная функция печати символа" alt="" coords="5,57,138,85"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#aa37f5841c54156a4b14fc0d6f626b44f" title="Это наши &quot;руки&quot; для работы с портами" alt="" coords="236,5,286,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,54,223,28,219,32,126,59"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#a739860b23b857cf3fc0294ce79c3a896" title="Вспомогательная штука, чтобы положить символ в конкретную точку экрана" alt="" coords="186,57,337,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,69,173,70,168,72,139,74"/>
+<area shape="rect" id="Node000004" href="$kernel_8cpp.html#a8ab08297307823edbb80b60a6aecabc2" title="Скроллинг экрана" alt="" coords="202,109,320,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="125,83,196,104,191,106,125,88"/>
+</map>

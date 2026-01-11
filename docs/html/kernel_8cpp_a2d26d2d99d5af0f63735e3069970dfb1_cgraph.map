@@ -1,0 +1,16 @@
+<map id="terminal_writeln" name="terminal_writeln">
+<area shape="rect" id="Node000001" title="Печать строки с переходом на новую" alt="" coords="5,83,134,110"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#a0e77ef8710654966af44f69becffcd80" title="Основная функция печати символа" alt="" coords="346,57,478,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,89,331,75,330,80,134,94"/>
+<area shape="rect" id="Node000006" href="$kernel_8cpp.html#aa1e14319626b81ec4e7d0d28729b1bd7" title="Просто печатаем строку целиком" alt="" coords="182,108,298,136"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="134,103,169,111,164,111,134,109"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#aa37f5841c54156a4b14fc0d6f626b44f" title="Это наши &quot;руки&quot; для работы с портами" alt="" coords="577,5,627,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="465,54,559,30,565,29,466,59"/>
+<area shape="rect" id="Node000004" href="$kernel_8cpp.html#a739860b23b857cf3fc0294ce79c3a896" title="Вспомогательная штука, чтобы положить символ в конкретную точку экрана" alt="" coords="526,57,678,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="479,69,514,71,508,71,479,74"/>
+<area shape="rect" id="Node000005" href="$kernel_8cpp.html#a8ab08297307823edbb80b60a6aecabc2" title="Скроллинг экрана" alt="" coords="543,109,661,137"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="466,83,537,105,532,105,465,88"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="289,105,345,90,351,89,290,110"/>
+<area shape="rect" id="Node000007" href="$kernel_8cpp.html#a008e171a518fe0e0352f31b245e03875" title="Считаем длину строки" alt="" coords="383,109,441,137"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="299,120,370,123,365,123,299,125"/>
+</map>

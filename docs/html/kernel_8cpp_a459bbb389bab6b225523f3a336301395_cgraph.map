@@ -1,0 +1,7 @@
+<map id="cmd_reboot" name="cmd_reboot">
+<area shape="rect" id="Node000001" title="Жесткий метод перезагрузки" alt="" coords="5,32,104,60"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#a0223c8898dfec29069879dc51076e28a" title="Забирает байт из порта" alt="" coords="156,5,198,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,33,144,26,139,28,105,38"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#aa37f5841c54156a4b14fc0d6f626b44f" title="Это наши &quot;руки&quot; для работы с портами" alt="" coords="152,57,202,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="104,53,139,63,134,63,104,59"/>
+</map>

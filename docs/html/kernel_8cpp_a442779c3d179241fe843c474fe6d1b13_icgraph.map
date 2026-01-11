@@ -1,0 +1,5 @@
+<map id="execute_command" name="execute_command">
+<area shape="rect" id="Node000001" title="Наш обработчик команд" alt="" coords="155,5,299,33"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#a6b8fb674fb359f6ae53dc9c4fb7fc6be" title="Точка входа в ядро" alt="" coords="5,5,107,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,19,107,22,107,17,142,19"/>
+</map>

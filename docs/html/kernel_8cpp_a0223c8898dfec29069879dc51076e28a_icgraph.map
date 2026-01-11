@@ -1,0 +1,13 @@
+<map id="inb" name="inb">
+<area shape="rect" id="Node000001" title="Забирает байт из порта" alt="" coords="493,57,535,85"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#ad9bf988ef2e66fe9a42d30d504c32d13" title="Управление лампочками на клаве" alt="" coords="358,5,434,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="477,56,429,36,430,31,482,56"/>
+<area shape="rect" id="Node000004" href="$kernel_8cpp.html#a6b8fb674fb359f6ae53dc9c4fb7fc6be" title="Точка входа в ядро" alt="" coords="5,83,107,110"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="482,86,446,99,352,110,259,113,174,110,107,105,107,99,174,105,259,108,352,105,445,94,477,87"/>
+<area shape="rect" id="Node000005" href="$kernel_8cpp.html#a459bbb389bab6b225523f3a336301395" title="Жесткий метод перезагрузки" alt="" coords="347,57,445,85"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="475,71,446,74,446,69,481,71"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#a442779c3d179241fe843c474fe6d1b13" title="Наш обработчик команд" alt="" coords="155,57,299,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="345,35,275,59,274,54,340,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,85,107,92,106,86,142,84"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="329,71,299,74,299,69,334,71"/>
+</map>

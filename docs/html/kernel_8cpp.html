@@ -1,0 +1,1433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VST Operating System: Файл kernel.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">VST Operating System<span id="projectnumber">&#160;1.0 Stable</span>
+   </div>
+   <div id="projectbrief">Сердце нашей операционки на C++</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('kernel_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл kernel.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Сердце нашей операционки.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для kernel.cpp:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp__incl.svg" width="179" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="kernel_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:abaae057bae62d0c3e11501e3199cb60e" id="r_abaae057bae62d0c3e11501e3199cb60e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaae057bae62d0c3e11501e3199cb60e">vga_color</a> { <br />
+&#160;&#160;<a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774">VGA_COLOR_BLACK</a> = 0
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805">VGA_COLOR_BLUE</a> = 1
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487">VGA_COLOR_GREEN</a> = 2
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab">VGA_COLOR_CYAN</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836">VGA_COLOR_RED</a> = 4
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee">VGA_COLOR_MAGENTA</a> = 5
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe">VGA_COLOR_BROWN</a> = 6
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="#abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68">VGA_COLOR_DARK_GREY</a> = 8
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282">VGA_COLOR_LIGHT_BLUE</a> = 9
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f">VGA_COLOR_LIGHT_GREEN</a> = 10
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d">VGA_COLOR_LIGHT_CYAN</a> = 11
+, <br />
+&#160;&#160;<a class="el" href="#abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d">VGA_COLOR_LIGHT_RED</a> = 12
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97">VGA_COLOR_LIGHT_MAGENTA</a> = 13
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694">VGA_COLOR_LIGHT_BROWN</a> = 14
+, <a class="el" href="#abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a">VGA_COLOR_WHITE</a> = 15
+<br />
+ }</td></tr>
+<tr class="memdesc:abaae057bae62d0c3e11501e3199cb60e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Таблица цветов для VGA.  <a href="#abaae057bae62d0c3e11501e3199cb60e">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:aa37f5841c54156a4b14fc0d6f626b44f" id="r_aa37f5841c54156a4b14fc0d6f626b44f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a> (uint16_t port, uint8_t val)</td></tr>
+<tr class="memdesc:aa37f5841c54156a4b14fc0d6f626b44f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Это наши "руки" для работы с портами  <br /></td></tr>
+<tr class="memitem:a0223c8898dfec29069879dc51076e28a" id="r_a0223c8898dfec29069879dc51076e28a"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0223c8898dfec29069879dc51076e28a">inb</a> (uint16_t port)</td></tr>
+<tr class="memdesc:a0223c8898dfec29069879dc51076e28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Забирает байт из порта  <br /></td></tr>
+<tr class="memitem:a488d1b3600792ee3aac5be4b7e0be16b" id="r_a488d1b3600792ee3aac5be4b7e0be16b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a488d1b3600792ee3aac5be4b7e0be16b">io_wait</a> (void)</td></tr>
+<tr class="memdesc:a488d1b3600792ee3aac5be4b7e0be16b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Маленькая задержка  <br /></td></tr>
+<tr class="memitem:a008e171a518fe0e0352f31b245e03875" id="r_a008e171a518fe0e0352f31b245e03875"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a008e171a518fe0e0352f31b245e03875">strlen</a> (const char *str)</td></tr>
+<tr class="memdesc:a008e171a518fe0e0352f31b245e03875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считаем длину строки  <br /></td></tr>
+<tr class="memitem:a166db80b274b2f9d796babb771e0ef85" id="r_a166db80b274b2f9d796babb771e0ef85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a> (const char *s1, const char *s2)</td></tr>
+<tr class="memdesc:a166db80b274b2f9d796babb771e0ef85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сравниваем две строки  <br /></td></tr>
+<tr class="memitem:a162352f6ed71b7dd30a52bdf9ffac698" id="r_a162352f6ed71b7dd30a52bdf9ffac698"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a162352f6ed71b7dd30a52bdf9ffac698">memset</a> (void *dest, char val, size_t count)</td></tr>
+<tr class="memdesc:a162352f6ed71b7dd30a52bdf9ffac698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Просто забиваем кусок памяти нужным символом  <br /></td></tr>
+<tr class="memitem:ac4802010a838e2e4909fe47fc7edbe3e" id="r_ac4802010a838e2e4909fe47fc7edbe3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4802010a838e2e4909fe47fc7edbe3e">terminal_initialize</a> (void)</td></tr>
+<tr class="memdesc:ac4802010a838e2e4909fe47fc7edbe3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Чистим экран при запуске и ставим курсор в начало  <br /></td></tr>
+<tr class="memitem:a8ab08297307823edbb80b60a6aecabc2" id="r_a8ab08297307823edbb80b60a6aecabc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ab08297307823edbb80b60a6aecabc2">terminal_scroll</a> ()</td></tr>
+<tr class="memdesc:a8ab08297307823edbb80b60a6aecabc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Скроллинг экрана  <br /></td></tr>
+<tr class="memitem:a739860b23b857cf3fc0294ce79c3a896" id="r_a739860b23b857cf3fc0294ce79c3a896"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a739860b23b857cf3fc0294ce79c3a896">terminal_putentryat</a> (char c, uint8_t color, size_t x, size_t y)</td></tr>
+<tr class="memdesc:a739860b23b857cf3fc0294ce79c3a896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вспомогательная штука, чтобы положить символ в конкретную точку экрана  <br /></td></tr>
+<tr class="memitem:a0e77ef8710654966af44f69becffcd80" id="r_a0e77ef8710654966af44f69becffcd80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e77ef8710654966af44f69becffcd80">terminal_putchar</a> (char c)</td></tr>
+<tr class="memdesc:a0e77ef8710654966af44f69becffcd80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Основная функция печати символа  <br /></td></tr>
+<tr class="memitem:aa1e14319626b81ec4e7d0d28729b1bd7" id="r_aa1e14319626b81ec4e7d0d28729b1bd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1e14319626b81ec4e7d0d28729b1bd7">terminal_write</a> (const char *data)</td></tr>
+<tr class="memdesc:aa1e14319626b81ec4e7d0d28729b1bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Просто печатаем строку целиком  <br /></td></tr>
+<tr class="memitem:a2d26d2d99d5af0f63735e3069970dfb1" id="r_a2d26d2d99d5af0f63735e3069970dfb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a> (const char *data)</td></tr>
+<tr class="memdesc:a2d26d2d99d5af0f63735e3069970dfb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печать строки с переходом на новую  <br /></td></tr>
+<tr class="memitem:ad2312e60fb89b6d9c2f56b63aa4d59e2" id="r_ad2312e60fb89b6d9c2f56b63aa4d59e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2312e60fb89b6d9c2f56b63aa4d59e2">terminal_backspace</a> ()</td></tr>
+<tr class="memdesc:ad2312e60fb89b6d9c2f56b63aa4d59e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Стираем последний символ  <br /></td></tr>
+<tr class="memitem:a459bbb389bab6b225523f3a336301395" id="r_a459bbb389bab6b225523f3a336301395"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a459bbb389bab6b225523f3a336301395">cmd_reboot</a> ()</td></tr>
+<tr class="memdesc:a459bbb389bab6b225523f3a336301395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Жесткий метод перезагрузки  <br /></td></tr>
+<tr class="memitem:aaa57a37d172e6161a88e431f469cebd4" id="r_aaa57a37d172e6161a88e431f469cebd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa57a37d172e6161a88e431f469cebd4">cmd_poweroff</a> ()</td></tr>
+<tr class="memdesc:aaa57a37d172e6161a88e431f469cebd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Попытка выключить комп  <br /></td></tr>
+<tr class="memitem:ad9bf988ef2e66fe9a42d30d504c32d13" id="r_ad9bf988ef2e66fe9a42d30d504c32d13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9bf988ef2e66fe9a42d30d504c32d13">cmd_led</a> (int status)</td></tr>
+<tr class="memdesc:ad9bf988ef2e66fe9a42d30d504c32d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Управление лампочками на клаве  <br /></td></tr>
+<tr class="memitem:a442779c3d179241fe843c474fe6d1b13" id="r_a442779c3d179241fe843c474fe6d1b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a442779c3d179241fe843c474fe6d1b13">execute_command</a> ()</td></tr>
+<tr class="memdesc:a442779c3d179241fe843c474fe6d1b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Наш обработчик команд  <br /></td></tr>
+<tr class="memitem:a6b8fb674fb359f6ae53dc9c4fb7fc6be" id="r_a6b8fb674fb359f6ae53dc9c4fb7fc6be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b8fb674fb359f6ae53dc9c4fb7fc6be">kernel_main</a> (void)</td></tr>
+<tr class="memdesc:a6b8fb674fb359f6ae53dc9c4fb7fc6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Точка входа в ядро  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a7bb2c25c4aa910dc8f58815dbb3c67dc" id="r_a7bb2c25c4aa910dc8f58815dbb3c67dc"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> = 80</td></tr>
+<tr class="memdesc:a7bb2c25c4aa910dc8f58815dbb3c67dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ширина текстового экрана (почти везде по дефолту 80).  <br /></td></tr>
+<tr class="memitem:a9d0a1e1ab3a08dc955ddb744de23ab04" id="r_a9d0a1e1ab3a08dc955ddb744de23ab04"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a> = 25</td></tr>
+<tr class="memdesc:a9d0a1e1ab3a08dc955ddb744de23ab04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Высота текстового экрана (почти везде по дефолту 25).  <br /></td></tr>
+<tr class="memitem:a11d32f6e21e0e40be6b8175a7cc19d6d" id="r_a11d32f6e21e0e40be6b8175a7cc19d6d"><td class="memItemLeft" align="right" valign="top">uint16_t *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11d32f6e21e0e40be6b8175a7cc19d6d">VGA_MEMORY</a> = (uint16_t *)0xB8000</td></tr>
+<tr class="memdesc:a11d32f6e21e0e40be6b8175a7cc19d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Волшебный адрес VGA_MEMORY.  <br /></td></tr>
+<tr class="memitem:a7b2081d954cde4b480d57878e4b3af58" id="r_a7b2081d954cde4b480d57878e4b3af58"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a></td></tr>
+<tr class="memdesc:a7b2081d954cde4b480d57878e4b3af58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущая строка курсора  <br /></td></tr>
+<tr class="memitem:a520603ae2a8f2d5cee740e42776cd4a9" id="r_a520603ae2a8f2d5cee740e42776cd4a9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a></td></tr>
+<tr class="memdesc:a520603ae2a8f2d5cee740e42776cd4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущий столбец курсора  <br /></td></tr>
+<tr class="memitem:a0165452ad102b2a781847d6616407976" id="r_a0165452ad102b2a781847d6616407976"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0165452ad102b2a781847d6616407976">terminal_color</a></td></tr>
+<tr class="memdesc:a0165452ad102b2a781847d6616407976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Текущий цвет текста  <br /></td></tr>
+<tr class="memitem:a47e72657e89c79ddc7393b941112a28e" id="r_a47e72657e89c79ddc7393b941112a28e"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a></td></tr>
+<tr class="memdesc:a47e72657e89c79ddc7393b941112a28e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на буфер экрана  <br /></td></tr>
+<tr class="memitem:acfe5583915d0a47629102cfd37b14c3d" id="r_acfe5583915d0a47629102cfd37b14c3d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfe5583915d0a47629102cfd37b14c3d">kbd_US</a> [128]</td></tr>
+<tr class="memdesc:acfe5583915d0a47629102cfd37b14c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Карта клавиш  <br /></td></tr>
+<tr class="memitem:a2eafa31c0fdd24b7c2acf8d9547767b5" id="r_a2eafa31c0fdd24b7c2acf8d9547767b5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a> [128]</td></tr>
+<tr class="memdesc:a2eafa31c0fdd24b7c2acf8d9547767b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер  <br /></td></tr>
+<tr class="memitem:adbfc6f7934b1232f3d68253d0e93a339" id="r_adbfc6f7934b1232f3d68253d0e93a339"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a> = 0</td></tr>
+<tr class="memdesc:adbfc6f7934b1232f3d68253d0e93a339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина текущей введенной команды  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Сердце нашей операционки. </p>
+<p>так, ну погнали. Это основной файл ядра. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a></p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Перечисления</h2>
+<a id="abaae057bae62d0c3e11501e3199cb60e" name="abaae057bae62d0c3e11501e3199cb60e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaae057bae62d0c3e11501e3199cb60e">&#9670;&#160;</a></span>vga_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#abaae057bae62d0c3e11501e3199cb60e">vga_color</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Таблица цветов для VGA. </p>
+<p>Стандартные 16 цветов из эпохи DOS. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774" name="abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774"></a>VGA_COLOR_BLACK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805" name="abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805"></a>VGA_COLOR_BLUE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487" name="abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487"></a>VGA_COLOR_GREEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab" name="abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab"></a>VGA_COLOR_CYAN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836" name="abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836"></a>VGA_COLOR_RED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee" name="abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee"></a>VGA_COLOR_MAGENTA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe" name="abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe"></a>VGA_COLOR_BROWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d" name="abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d"></a>VGA_COLOR_LIGHT_GREY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68" name="abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68"></a>VGA_COLOR_DARK_GREY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282" name="abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282"></a>VGA_COLOR_LIGHT_BLUE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f" name="abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f"></a>VGA_COLOR_LIGHT_GREEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d" name="abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d"></a>VGA_COLOR_LIGHT_CYAN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d" name="abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d"></a>VGA_COLOR_LIGHT_RED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97" name="abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97"></a>VGA_COLOR_LIGHT_MAGENTA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694" name="abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694"></a>VGA_COLOR_LIGHT_BROWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a" name="abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a"></a>VGA_COLOR_WHITE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00089">89</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>{</div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774">VGA_COLOR_BLACK</a> = 0,</div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805">VGA_COLOR_BLUE</a> = 1,</div>
+<div class="line"><span class="lineno">   93</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487">VGA_COLOR_GREEN</a> = 2,</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab">VGA_COLOR_CYAN</a> = 3,</div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836">VGA_COLOR_RED</a> = 4,</div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee">VGA_COLOR_MAGENTA</a> = 5,</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe">VGA_COLOR_BROWN</a> = 6,</div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a> = 7,</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68">VGA_COLOR_DARK_GREY</a> = 8,</div>
+<div class="line"><span class="lineno">  100</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282">VGA_COLOR_LIGHT_BLUE</a> = 9,</div>
+<div class="line"><span class="lineno">  101</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f">VGA_COLOR_LIGHT_GREEN</a> = 10,</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d">VGA_COLOR_LIGHT_CYAN</a> = 11,</div>
+<div class="line"><span class="lineno">  103</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d">VGA_COLOR_LIGHT_RED</a> = 12,</div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97">VGA_COLOR_LIGHT_MAGENTA</a> = 13,</div>
+<div class="line"><span class="lineno">  105</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694">VGA_COLOR_LIGHT_BROWN</a> = 14,</div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a">VGA_COLOR_WHITE</a> = 15,</div>
+<div class="line"><span class="lineno">  107</span>};</div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774">VGA_COLOR_BLACK</a></div><div class="ttdeci">@ VGA_COLOR_BLACK</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00091">kernel.cpp:91</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487">VGA_COLOR_GREEN</a></div><div class="ttdeci">@ VGA_COLOR_GREEN</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00093">kernel.cpp:93</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_GREY</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00098">kernel.cpp:98</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97">VGA_COLOR_LIGHT_MAGENTA</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_MAGENTA</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00104">kernel.cpp:104</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f">VGA_COLOR_LIGHT_GREEN</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_GREEN</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00101">kernel.cpp:101</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805">VGA_COLOR_BLUE</a></div><div class="ttdeci">@ VGA_COLOR_BLUE</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00092">kernel.cpp:92</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee">VGA_COLOR_MAGENTA</a></div><div class="ttdeci">@ VGA_COLOR_MAGENTA</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00096">kernel.cpp:96</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836">VGA_COLOR_RED</a></div><div class="ttdeci">@ VGA_COLOR_RED</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00095">kernel.cpp:95</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694">VGA_COLOR_LIGHT_BROWN</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_BROWN</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00105">kernel.cpp:105</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe">VGA_COLOR_BROWN</a></div><div class="ttdeci">@ VGA_COLOR_BROWN</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00097">kernel.cpp:97</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a">VGA_COLOR_WHITE</a></div><div class="ttdeci">@ VGA_COLOR_WHITE</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00106">kernel.cpp:106</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d">VGA_COLOR_LIGHT_CYAN</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_CYAN</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00102">kernel.cpp:102</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282">VGA_COLOR_LIGHT_BLUE</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_BLUE</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00100">kernel.cpp:100</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d">VGA_COLOR_LIGHT_RED</a></div><div class="ttdeci">@ VGA_COLOR_LIGHT_RED</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00103">kernel.cpp:103</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab">VGA_COLOR_CYAN</a></div><div class="ttdeci">@ VGA_COLOR_CYAN</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00094">kernel.cpp:94</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68"><div class="ttname"><a href="#abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68">VGA_COLOR_DARK_GREY</a></div><div class="ttdeci">@ VGA_COLOR_DARK_GREY</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00099">kernel.cpp:99</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="ad9bf988ef2e66fe9a42d30d504c32d13" name="ad9bf988ef2e66fe9a42d30d504c32d13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9bf988ef2e66fe9a42d30d504c32d13">&#9670;&#160;</a></span>cmd_led()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cmd_led </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Управление лампочками на клаве </p>
+<p>CapsLock, NumLock и т.д. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00301">301</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>{</div>
+<div class="line"><span class="lineno">  303</span>    <span class="keywordflow">while</span> ((<a class="code hl_function" href="#a0223c8898dfec29069879dc51076e28a">inb</a>(0x64) &amp; 2) != 0)</div>
+<div class="line"><span class="lineno">  304</span>        ;</div>
+<div class="line"><span class="lineno">  305</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x60, 0xED); <span class="comment">// говорим, что сейчас будем менять состояние диодов</span></div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>    <span class="keywordflow">while</span> ((<a class="code hl_function" href="#a0223c8898dfec29069879dc51076e28a">inb</a>(0x64) &amp; 2) != 0)</div>
+<div class="line"><span class="lineno">  308</span>        ;</div>
+<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">if</span> (status == 1)</div>
+<div class="line"><span class="lineno">  310</span>        <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x60, 0x07); <span class="comment">// зажечь всё</span></div>
+<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  312</span>        <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x60, 0x00); <span class="comment">// погасить всё</span></div>
+<div class="line"><span class="lineno">  313</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a0223c8898dfec29069879dc51076e28a"><div class="ttname"><a href="#a0223c8898dfec29069879dc51076e28a">inb</a></div><div class="ttdeci">static uint8_t inb(uint16_t port)</div><div class="ttdoc">Забирает байт из порта</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00027">kernel.cpp:27</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_aa37f5841c54156a4b14fc0d6f626b44f"><div class="ttname"><a href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a></div><div class="ttdeci">static void outb(uint16_t port, uint8_t val)</div><div class="ttdoc">Это наши &quot;руки&quot; для работы с портами</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00016">kernel.cpp:16</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00027">inb()</a> и <a class="el" href="kernel_8cpp_source.html#l00016">outb()</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13_cgraph.svg" width="186" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_ad9bf988ef2e66fe9a42d30d504c32d13_icgraph.svg" width="430" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aaa57a37d172e6161a88e431f469cebd4" name="aaa57a37d172e6161a88e431f469cebd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa57a37d172e6161a88e431f469cebd4">&#9670;&#160;</a></span>cmd_poweroff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cmd_poweroff </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Попытка выключить комп </p>
+<p>Работает в эмуляторах типа QEMU. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00288">288</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  289</span>{</div>
+<div class="line"><span class="lineno">  290</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x604, 0x2000);</div>
+<div class="line"><span class="lineno">  291</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0xB004, 0x2000);</div>
+<div class="line"><span class="lineno">  292</span>    <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;ACPI Shutdown not available via Ports.&quot;</span>);</div>
+<div class="line"><span class="lineno">  293</span>    <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;Please turn off power manually.&quot;</span>);</div>
+<div class="line"><span class="lineno">  294</span>    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;hlt&quot;</span>);</div>
+<div class="line"><span class="lineno">  295</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a2d26d2d99d5af0f63735e3069970dfb1"><div class="ttname"><a href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a></div><div class="ttdeci">void terminal_writeln(const char *data)</div><div class="ttdoc">Печать строки с переходом на новую</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00224">kernel.cpp:224</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00016">outb()</a> и <a class="el" href="kernel_8cpp_source.html#l00224">terminal_writeln()</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4_cgraph.svg" width="100%" height="407"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_aaa57a37d172e6161a88e431f469cebd4_icgraph.svg" width="466" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a459bbb389bab6b225523f3a336301395" name="a459bbb389bab6b225523f3a336301395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a459bbb389bab6b225523f3a336301395">&#9670;&#160;</a></span>cmd_reboot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cmd_reboot </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Жесткий метод перезагрузки </p>
+<p>Через контроллер клавиатуры. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00270">270</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  271</span>{</div>
+<div class="line"><span class="lineno">  272</span>    uint8_t temp;</div>
+<div class="line"><span class="lineno">  273</span>    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;cli&quot;</span>); <span class="comment">// вырубаем прерывания, чтобы ничего не мешало</span></div>
+<div class="line"><span class="lineno">  274</span>    <span class="keywordflow">do</span></div>
+<div class="line"><span class="lineno">  275</span>    {</div>
+<div class="line"><span class="lineno">  276</span>        temp = <a class="code hl_function" href="#a0223c8898dfec29069879dc51076e28a">inb</a>(0x64); <span class="comment">// ждем, пока контроллер освободится</span></div>
+<div class="line"><span class="lineno">  277</span>        <span class="keywordflow">if</span> (temp &amp; 1)</div>
+<div class="line"><span class="lineno">  278</span>            <a class="code hl_function" href="#a0223c8898dfec29069879dc51076e28a">inb</a>(0x60);</div>
+<div class="line"><span class="lineno">  279</span>    } <span class="keywordflow">while</span> (temp &amp; 2);</div>
+<div class="line"><span class="lineno">  280</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x64, 0xFE); <span class="comment">// шлем команду на ресет</span></div>
+<div class="line"><span class="lineno">  281</span>    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;hlt&quot;</span>);</div>
+<div class="line"><span class="lineno">  282</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00027">inb()</a> и <a class="el" href="kernel_8cpp_source.html#l00016">outb()</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a459bbb389bab6b225523f3a336301395_cgraph.svg" width="208" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a459bbb389bab6b225523f3a336301395_icgraph.svg" width="451" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a442779c3d179241fe843c474fe6d1b13" name="a442779c3d179241fe843c474fe6d1b13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a442779c3d179241fe843c474fe6d1b13">&#9670;&#160;</a></span>execute_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void execute_command </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Наш обработчик команд </p>
+<p>Это простейший парсер ввода. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00324">324</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  325</span>{</div>
+<div class="line"><span class="lineno">  326</span>    <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  327</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a> == 0)</div>
+<div class="line"><span class="lineno">  328</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  329</span> </div>
+<div class="line"><span class="lineno">  330</span>    <span class="comment">// проверяем, что там ввел пользователь</span></div>
+<div class="line"><span class="lineno">  331</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;about&quot;</span>))</div>
+<div class="line"><span class="lineno">  332</span>    {</div>
+<div class="line"><span class="lineno">  333</span>        <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d">VGA_COLOR_LIGHT_CYAN</a>;</div>
+<div class="line"><span class="lineno">  334</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;-------------------------&quot;</span>);</div>
+<div class="line"><span class="lineno">  335</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;  VST Operating System Stable&quot;</span>);</div>
+<div class="line"><span class="lineno">  336</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;  FOR LEARNING ONLY&quot;</span>);</div>
+<div class="line"><span class="lineno">  337</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;-------------------------&quot;</span>);</div>
+<div class="line"><span class="lineno">  338</span>        <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a>;</div>
+<div class="line"><span class="lineno">  339</span>    }</div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;cat&quot;</span>))</div>
+<div class="line"><span class="lineno">  341</span>    {</div>
+<div class="line"><span class="lineno">  342</span>        <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f">VGA_COLOR_LIGHT_GREEN</a>;</div>
+<div class="line"><span class="lineno">  343</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;   /\\_/\\  &quot;</span>);</div>
+<div class="line"><span class="lineno">  344</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;  ( o.o ) &quot;</span>);</div>
+<div class="line"><span class="lineno">  345</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;   &gt; ^ &lt;  &quot;</span>);</div>
+<div class="line"><span class="lineno">  346</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;  /  ^  \\ &quot;</span>);</div>
+<div class="line"><span class="lineno">  347</span>        <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a>;</div>
+<div class="line"><span class="lineno">  348</span>    }</div>
+<div class="line"><span class="lineno">  349</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;help&quot;</span>))</div>
+<div class="line"><span class="lineno">  350</span>    {</div>
+<div class="line"><span class="lineno">  351</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;Available commands:&quot;</span>);</div>
+<div class="line"><span class="lineno">  352</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; about    - OS info&quot;</span>);</div>
+<div class="line"><span class="lineno">  353</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; ascii    - Show art&quot;</span>);</div>
+<div class="line"><span class="lineno">  354</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; clear    - Clear screen&quot;</span>);</div>
+<div class="line"><span class="lineno">  355</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; led 1    - Turn ON keyboard LEDs&quot;</span>);</div>
+<div class="line"><span class="lineno">  356</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; led 0    - Turn OFF keyboard LEDs&quot;</span>);</div>
+<div class="line"><span class="lineno">  357</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; reboot   - Restart system&quot;</span>);</div>
+<div class="line"><span class="lineno">  358</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot; power 0  - Shutdown (QEMU)&quot;</span>);</div>
+<div class="line"><span class="lineno">  359</span>    }</div>
+<div class="line"><span class="lineno">  360</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;reboot&quot;</span>))</div>
+<div class="line"><span class="lineno">  361</span>    {</div>
+<div class="line"><span class="lineno">  362</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;Rebooting...&quot;</span>);</div>
+<div class="line"><span class="lineno">  363</span>        <a class="code hl_function" href="#a459bbb389bab6b225523f3a336301395">cmd_reboot</a>();</div>
+<div class="line"><span class="lineno">  364</span>    }</div>
+<div class="line"><span class="lineno">  365</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;power 0&quot;</span>))</div>
+<div class="line"><span class="lineno">  366</span>    {</div>
+<div class="line"><span class="lineno">  367</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;Shutting down...&quot;</span>);</div>
+<div class="line"><span class="lineno">  368</span>        <a class="code hl_function" href="#aaa57a37d172e6161a88e431f469cebd4">cmd_poweroff</a>();</div>
+<div class="line"><span class="lineno">  369</span>    }</div>
+<div class="line"><span class="lineno">  370</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;led 1&quot;</span>))</div>
+<div class="line"><span class="lineno">  371</span>    {</div>
+<div class="line"><span class="lineno">  372</span>        <a class="code hl_function" href="#ad9bf988ef2e66fe9a42d30d504c32d13">cmd_led</a>(1);</div>
+<div class="line"><span class="lineno">  373</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;LEDs ON&quot;</span>);</div>
+<div class="line"><span class="lineno">  374</span>    }</div>
+<div class="line"><span class="lineno">  375</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;led 0&quot;</span>))</div>
+<div class="line"><span class="lineno">  376</span>    {</div>
+<div class="line"><span class="lineno">  377</span>        <a class="code hl_function" href="#ad9bf988ef2e66fe9a42d30d504c32d13">cmd_led</a>(0);</div>
+<div class="line"><span class="lineno">  378</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;LEDs OFF&quot;</span>);</div>
+<div class="line"><span class="lineno">  379</span>    }</div>
+<div class="line"><span class="lineno">  380</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>, <span class="stringliteral">&quot;clear&quot;</span>))</div>
+<div class="line"><span class="lineno">  381</span>    {</div>
+<div class="line"><span class="lineno">  382</span>        <a class="code hl_function" href="#ac4802010a838e2e4909fe47fc7edbe3e">terminal_initialize</a>();</div>
+<div class="line"><span class="lineno">  383</span>    }</div>
+<div class="line"><span class="lineno">  384</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  385</span>    {</div>
+<div class="line"><span class="lineno">  386</span>        <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d">VGA_COLOR_LIGHT_RED</a>;</div>
+<div class="line"><span class="lineno">  387</span>        <a class="code hl_function" href="#aa1e14319626b81ec4e7d0d28729b1bd7">terminal_write</a>(<span class="stringliteral">&quot;Unknown command: &quot;</span>);</div>
+<div class="line"><span class="lineno">  388</span>        <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>);</div>
+<div class="line"><span class="lineno">  389</span>        <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a>;</div>
+<div class="line"><span class="lineno">  390</span>    }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>    <span class="comment">// после выполнения чистим буфер для новой команды</span></div>
+<div class="line"><span class="lineno">  393</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 128; i++)</div>
+<div class="line"><span class="lineno">  394</span>        <a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>[i] = 0;</div>
+<div class="line"><span class="lineno">  395</span>    <a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a> = 0;</div>
+<div class="line"><span class="lineno">  396</span>    <a class="code hl_function" href="#aa1e14319626b81ec4e7d0d28729b1bd7">terminal_write</a>(<span class="stringliteral">&quot;&gt; &quot;</span>);</div>
+<div class="line"><span class="lineno">  397</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a0165452ad102b2a781847d6616407976"><div class="ttname"><a href="#a0165452ad102b2a781847d6616407976">terminal_color</a></div><div class="ttdeci">uint8_t terminal_color</div><div class="ttdoc">Текущий цвет текста</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00123">kernel.cpp:123</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a166db80b274b2f9d796babb771e0ef85"><div class="ttname"><a href="#a166db80b274b2f9d796babb771e0ef85">strcmp</a></div><div class="ttdeci">bool strcmp(const char *s1, const char *s2)</div><div class="ttdoc">Сравниваем две строки</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00062">kernel.cpp:62</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a2eafa31c0fdd24b7c2acf8d9547767b5"><div class="ttname"><a href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a></div><div class="ttdeci">char cmd_buffer[128]</div><div class="ttdoc">Буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00316">kernel.cpp:316</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a459bbb389bab6b225523f3a336301395"><div class="ttname"><a href="#a459bbb389bab6b225523f3a336301395">cmd_reboot</a></div><div class="ttdeci">void cmd_reboot()</div><div class="ttdoc">Жесткий метод перезагрузки</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00270">kernel.cpp:270</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_aa1e14319626b81ec4e7d0d28729b1bd7"><div class="ttname"><a href="#aa1e14319626b81ec4e7d0d28729b1bd7">terminal_write</a></div><div class="ttdeci">void terminal_write(const char *data)</div><div class="ttdoc">Просто печатаем строку целиком</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00215">kernel.cpp:215</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_aaa57a37d172e6161a88e431f469cebd4"><div class="ttname"><a href="#aaa57a37d172e6161a88e431f469cebd4">cmd_poweroff</a></div><div class="ttdeci">void cmd_poweroff()</div><div class="ttdoc">Попытка выключить комп</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00288">kernel.cpp:288</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_ac4802010a838e2e4909fe47fc7edbe3e"><div class="ttname"><a href="#ac4802010a838e2e4909fe47fc7edbe3e">terminal_initialize</a></div><div class="ttdeci">void terminal_initialize(void)</div><div class="ttdoc">Чистим экран при запуске и ставим курсор в начало</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00130">kernel.cpp:130</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_ad9bf988ef2e66fe9a42d30d504c32d13"><div class="ttname"><a href="#ad9bf988ef2e66fe9a42d30d504c32d13">cmd_led</a></div><div class="ttdeci">void cmd_led(int status)</div><div class="ttdoc">Управление лампочками на клаве</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00301">kernel.cpp:301</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_adbfc6f7934b1232f3d68253d0e93a339"><div class="ttname"><a href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a></div><div class="ttdeci">int cmd_len</div><div class="ttdoc">Длина текущей введенной команды</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00318">kernel.cpp:318</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00316">cmd_buffer</a>, <a class="el" href="kernel_8cpp_source.html#l00301">cmd_led()</a>, <a class="el" href="kernel_8cpp_source.html#l00318">cmd_len</a>, <a class="el" href="kernel_8cpp_source.html#l00288">cmd_poweroff()</a>, <a class="el" href="kernel_8cpp_source.html#l00270">cmd_reboot()</a>, <a class="el" href="kernel_8cpp_source.html#l00062">strcmp()</a>, <a class="el" href="kernel_8cpp_source.html#l00123">terminal_color</a>, <a class="el" href="kernel_8cpp_source.html#l00130">terminal_initialize()</a>, <a class="el" href="kernel_8cpp_source.html#l00215">terminal_write()</a>, <a class="el" href="kernel_8cpp_source.html#l00224">terminal_writeln()</a>, <a class="el" href="kernel_8cpp_source.html#l00102">VGA_COLOR_LIGHT_CYAN</a>, <a class="el" href="kernel_8cpp_source.html#l00101">VGA_COLOR_LIGHT_GREEN</a>, <a class="el" href="kernel_8cpp_source.html#l00098">VGA_COLOR_LIGHT_GREY</a> и <a class="el" href="kernel_8cpp_source.html#l00103">VGA_COLOR_LIGHT_RED</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a442779c3d179241fe843c474fe6d1b13_cgraph.svg" width="100%" height="569"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a442779c3d179241fe843c474fe6d1b13_icgraph.svg" width="304" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a0223c8898dfec29069879dc51076e28a" name="a0223c8898dfec29069879dc51076e28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0223c8898dfec29069879dc51076e28a">&#9670;&#160;</a></span>inb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t inb </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Забирает байт из порта </p>
+<p>Так мы узнаем, какую клавишу нажали. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Порт устройства </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Считанный байт </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00027">27</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
+<div class="line"><span class="lineno">   29</span>    uint8_t ret;</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;inb %1, %0&quot;</span> : <span class="stringliteral">&quot;=a&quot;</span>(ret) : <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a0223c8898dfec29069879dc51076e28a_icgraph.svg" width="540" height="116"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a488d1b3600792ee3aac5be4b7e0be16b" name="a488d1b3600792ee3aac5be4b7e0be16b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a488d1b3600792ee3aac5be4b7e0be16b">&#9670;&#160;</a></span>io_wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void io_wait </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Маленькая задержка </p>
+<p>Иногда железо слишком медленное для проца. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00038">38</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x80, 0);</div>
+<div class="line"><span class="lineno">   41</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00016">outb()</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a488d1b3600792ee3aac5be4b7e0be16b_cgraph.svg" width="178" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6b8fb674fb359f6ae53dc9c4fb7fc6be" name="a6b8fb674fb359f6ae53dc9c4fb7fc6be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b8fb674fb359f6ae53dc9c4fb7fc6be">&#9670;&#160;</a></span>kernel_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kernel_main </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Точка входа в ядро </p>
+<p>Именно сюда GRUB передаст управление после загрузки. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00403">403</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  404</span>{</div>
+<div class="line"><span class="lineno">  405</span>    <span class="comment">// стартуем экран</span></div>
+<div class="line"><span class="lineno">  406</span>    <a class="code hl_function" href="#ac4802010a838e2e4909fe47fc7edbe3e">terminal_initialize</a>();</div>
+<div class="line"><span class="lineno">  407</span> </div>
+<div class="line"><span class="lineno">  408</span>    <span class="comment">// приветствие</span></div>
+<div class="line"><span class="lineno">  409</span>    <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a">VGA_COLOR_WHITE</a>;</div>
+<div class="line"><span class="lineno">  410</span>    <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;VST Operating System&quot;</span>);</div>
+<div class="line"><span class="lineno">  411</span>    <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;Type &#39;help&#39; for commands.&quot;</span>);</div>
+<div class="line"><span class="lineno">  412</span>    <a class="code hl_function" href="#a2d26d2d99d5af0f63735e3069970dfb1">terminal_writeln</a>(<span class="stringliteral">&quot;------------------------------&quot;</span>);</div>
+<div class="line"><span class="lineno">  413</span>    <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a>;</div>
+<div class="line"><span class="lineno">  414</span>    <a class="code hl_function" href="#aa1e14319626b81ec4e7d0d28729b1bd7">terminal_write</a>(<span class="stringliteral">&quot;&gt; &quot;</span>);</div>
+<div class="line"><span class="lineno">  415</span> </div>
+<div class="line"><span class="lineno">  416</span>    <span class="comment">// основной цикл, тут и живет система</span></div>
+<div class="line"><span class="lineno">  417</span>    <span class="keywordflow">while</span> (1)</div>
+<div class="line"><span class="lineno">  418</span>    {</div>
+<div class="line"><span class="lineno">  419</span>        <span class="comment">// опрашиваем порт клавиатуры на нажатие чего либо</span></div>
+<div class="line"><span class="lineno">  420</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="#a0223c8898dfec29069879dc51076e28a">inb</a>(0x64) &amp; 1)</div>
+<div class="line"><span class="lineno">  421</span>        {</div>
+<div class="line"><span class="lineno">  422</span>            uint8_t scancode = <a class="code hl_function" href="#a0223c8898dfec29069879dc51076e28a">inb</a>(0x60);</div>
+<div class="line"><span class="lineno">  423</span> </div>
+<div class="line"><span class="lineno">  424</span>            <span class="comment">// если старший бит 1, значит клавишу отпустили, нам это пока не интересно</span></div>
+<div class="line"><span class="lineno">  425</span>            <span class="keywordflow">if</span> (scancode &amp; 0x80)</div>
+<div class="line"><span class="lineno">  426</span>            {</div>
+<div class="line"><span class="lineno">  427</span>            }</div>
+<div class="line"><span class="lineno">  428</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  429</span>            {</div>
+<div class="line"><span class="lineno">  430</span>                <span class="comment">// получаем символ из нашей таблицы</span></div>
+<div class="line"><span class="lineno">  431</span>                <span class="keywordtype">char</span> c = <a class="code hl_variable" href="#acfe5583915d0a47629102cfd37b14c3d">kbd_US</a>[scancode];</div>
+<div class="line"><span class="lineno">  432</span> </div>
+<div class="line"><span class="lineno">  433</span>                <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) <span class="comment">// нажали энтер - выполняем</span></div>
+<div class="line"><span class="lineno">  434</span>                {</div>
+<div class="line"><span class="lineno">  435</span>                    <a class="code hl_function" href="#a442779c3d179241fe843c474fe6d1b13">execute_command</a>();</div>
+<div class="line"><span class="lineno">  436</span>                }</div>
+<div class="line"><span class="lineno">  437</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\b&#39;</span>) <span class="comment">// нажали бакспейс - стираем</span></div>
+<div class="line"><span class="lineno">  438</span>                {</div>
+<div class="line"><span class="lineno">  439</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  440</span>                    {</div>
+<div class="line"><span class="lineno">  441</span>                        <a class="code hl_function" href="#ad2312e60fb89b6d9c2f56b63aa4d59e2">terminal_backspace</a>();</div>
+<div class="line"><span class="lineno">  442</span>                        <a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>[--<a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a>] = 0;</div>
+<div class="line"><span class="lineno">  443</span>                    }</div>
+<div class="line"><span class="lineno">  444</span>                }</div>
+<div class="line"><span class="lineno">  445</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c &gt; 0) <span class="comment">// обычная буква - пишем в буфер и на экран</span></div>
+<div class="line"><span class="lineno">  446</span>                {</div>
+<div class="line"><span class="lineno">  447</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a> &lt; 79)</div>
+<div class="line"><span class="lineno">  448</span>                    {</div>
+<div class="line"><span class="lineno">  449</span>                        <a class="code hl_function" href="#a0e77ef8710654966af44f69becffcd80">terminal_putchar</a>(c);</div>
+<div class="line"><span class="lineno">  450</span>                        <a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>[<a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a>++] = c;</div>
+<div class="line"><span class="lineno">  451</span>                        <a class="code hl_variable" href="#a2eafa31c0fdd24b7c2acf8d9547767b5">cmd_buffer</a>[<a class="code hl_variable" href="#adbfc6f7934b1232f3d68253d0e93a339">cmd_len</a>] = 0;</div>
+<div class="line"><span class="lineno">  452</span>                    }</div>
+<div class="line"><span class="lineno">  453</span>                }</div>
+<div class="line"><span class="lineno">  454</span>            }</div>
+<div class="line"><span class="lineno">  455</span>        }</div>
+<div class="line"><span class="lineno">  456</span>    }</div>
+<div class="line"><span class="lineno">  457</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a0e77ef8710654966af44f69becffcd80"><div class="ttname"><a href="#a0e77ef8710654966af44f69becffcd80">terminal_putchar</a></div><div class="ttdeci">void terminal_putchar(char c)</div><div class="ttdoc">Основная функция печати символа</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00181">kernel.cpp:181</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a442779c3d179241fe843c474fe6d1b13"><div class="ttname"><a href="#a442779c3d179241fe843c474fe6d1b13">execute_command</a></div><div class="ttdeci">void execute_command()</div><div class="ttdoc">Наш обработчик команд</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00324">kernel.cpp:324</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_acfe5583915d0a47629102cfd37b14c3d"><div class="ttname"><a href="#acfe5583915d0a47629102cfd37b14c3d">kbd_US</a></div><div class="ttdeci">char kbd_US[128]</div><div class="ttdoc">Карта клавиш</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00259">kernel.cpp:259</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_ad2312e60fb89b6d9c2f56b63aa4d59e2"><div class="ttname"><a href="#ad2312e60fb89b6d9c2f56b63aa4d59e2">terminal_backspace</a></div><div class="ttdeci">void terminal_backspace()</div><div class="ttdoc">Стираем последний символ</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00234">kernel.cpp:234</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00316">cmd_buffer</a>, <a class="el" href="kernel_8cpp_source.html#l00318">cmd_len</a>, <a class="el" href="kernel_8cpp_source.html#l00324">execute_command()</a>, <a class="el" href="kernel_8cpp_source.html#l00027">inb()</a>, <a class="el" href="kernel_8cpp_source.html#l00259">kbd_US</a>, <a class="el" href="kernel_8cpp_source.html#l00234">terminal_backspace()</a>, <a class="el" href="kernel_8cpp_source.html#l00123">terminal_color</a>, <a class="el" href="kernel_8cpp_source.html#l00130">terminal_initialize()</a>, <a class="el" href="kernel_8cpp_source.html#l00181">terminal_putchar()</a>, <a class="el" href="kernel_8cpp_source.html#l00215">terminal_write()</a>, <a class="el" href="kernel_8cpp_source.html#l00224">terminal_writeln()</a>, <a class="el" href="kernel_8cpp_source.html#l00098">VGA_COLOR_LIGHT_GREY</a> и <a class="el" href="kernel_8cpp_source.html#l00106">VGA_COLOR_WHITE</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a6b8fb674fb359f6ae53dc9c4fb7fc6be_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a162352f6ed71b7dd30a52bdf9ffac698" name="a162352f6ed71b7dd30a52bdf9ffac698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a162352f6ed71b7dd30a52bdf9ffac698">&#9670;&#160;</a></span>memset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void memset </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>dest</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>val</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Просто забиваем кусок памяти нужным символом </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>Адрес начала </td></tr>
+    <tr><td class="paramname">val</td><td>Чем забиваем </td></tr>
+    <tr><td class="paramname">count</td><td>Сколько байт </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00078">78</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordtype">char</span> *temp = (<span class="keywordtype">char</span> *)dest;</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">for</span> (; count != 0; count--)</div>
+<div class="line"><span class="lineno">   82</span>        *temp++ = val;</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa37f5841c54156a4b14fc0d6f626b44f" name="aa37f5841c54156a4b14fc0d6f626b44f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa37f5841c54156a4b14fc0d6f626b44f">&#9670;&#160;</a></span>outb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void outb </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>port</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Это наши "руки" для работы с портами </p>
+<p>Процессор общается с железками через них. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Порт устройства </td></tr>
+    <tr><td class="paramname">val</td><td>Байт, который шлем (например, скомандовать клавиатуре мигнуть лампочкой) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00016">16</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keyword">asm</span> <span class="keyword">volatile</span>(<span class="stringliteral">&quot;outb %0, %1&quot;</span> : : <span class="stringliteral">&quot;a&quot;</span>(val), <span class="stringliteral">&quot;Nd&quot;</span>(port));</div>
+<div class="line"><span class="lineno">   19</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_aa37f5841c54156a4b14fc0d6f626b44f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a166db80b274b2f9d796babb771e0ef85" name="a166db80b274b2f9d796babb771e0ef85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166db80b274b2f9d796babb771e0ef85">&#9670;&#160;</a></span>strcmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool strcmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>s1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>s2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сравниваем две строки </p>
+<p>Чтобы понимать, какую команду ввел юзер. </p><dl class="section return"><dt>Возвращает</dt><dd>true если строки одинаковые </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00062">62</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">while</span> (*s1 &amp;&amp; (*s1 == *s2))</div>
+<div class="line"><span class="lineno">   65</span>    {</div>
+<div class="line"><span class="lineno">   66</span>        s1++;</div>
+<div class="line"><span class="lineno">   67</span>        s2++;</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> *s1 == *s2;</div>
+<div class="line"><span class="lineno">   70</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a166db80b274b2f9d796babb771e0ef85_icgraph.svg" width="419" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a008e171a518fe0e0352f31b245e03875" name="a008e171a518fe0e0352f31b245e03875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a008e171a518fe0e0352f31b245e03875">&#9670;&#160;</a></span>strlen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t strlen </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считаем длину строки </p>
+<p>Пока нет стандартной библиотеки, пишем всё сами. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Указатель на строку </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество символов </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00049">49</a></p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordtype">size_t</span> len = 0;</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">while</span> (str[len])</div>
+<div class="line"><span class="lineno">   53</span>        len++;</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> len;</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a008e171a518fe0e0352f31b245e03875_icgraph.svg" width="100%" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad2312e60fb89b6d9c2f56b63aa4d59e2" name="ad2312e60fb89b6d9c2f56b63aa4d59e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2312e60fb89b6d9c2f56b63aa4d59e2">&#9670;&#160;</a></span>terminal_backspace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_backspace </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Стираем последний символ </p>
+<p>Нужно для работы Backspace. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00234">234</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
+<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> == 0 &amp;&amp; <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  237</span>    {</div>
+<div class="line"><span class="lineno">  238</span>        <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a>--;</div>
+<div class="line"><span class="lineno">  239</span>        <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> = <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a>;</div>
+<div class="line"><span class="lineno">  240</span>    }</div>
+<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> &gt; 0)</div>
+<div class="line"><span class="lineno">  242</span>    {</div>
+<div class="line"><span class="lineno">  243</span>        <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a>--;</div>
+<div class="line"><span class="lineno">  244</span>        <a class="code hl_function" href="#a739860b23b857cf3fc0294ce79c3a896">terminal_putentryat</a>(<span class="charliteral">&#39; &#39;</span>, <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a>, <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a>, <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a>);</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>        <span class="comment">// не забываем вернуть мигающий курсор назад</span></div>
+<div class="line"><span class="lineno">  247</span>        uint16_t pos = <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a>;</div>
+<div class="line"><span class="lineno">  248</span>        <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D4, 0x0F);</div>
+<div class="line"><span class="lineno">  249</span>        <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D5, (uint8_t)(pos &amp; 0xFF));</div>
+<div class="line"><span class="lineno">  250</span>        <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D4, 0x0E);</div>
+<div class="line"><span class="lineno">  251</span>        <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D5, (uint8_t)((pos &gt;&gt; 8) &amp; 0xFF));</div>
+<div class="line"><span class="lineno">  252</span>    }</div>
+<div class="line"><span class="lineno">  253</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a520603ae2a8f2d5cee740e42776cd4a9"><div class="ttname"><a href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a></div><div class="ttdeci">size_t terminal_column</div><div class="ttdoc">Текущий столбец курсора</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00121">kernel.cpp:121</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a739860b23b857cf3fc0294ce79c3a896"><div class="ttname"><a href="#a739860b23b857cf3fc0294ce79c3a896">terminal_putentryat</a></div><div class="ttdeci">void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)</div><div class="ttdoc">Вспомогательная штука, чтобы положить символ в конкретную точку экрана</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00171">kernel.cpp:171</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a7b2081d954cde4b480d57878e4b3af58"><div class="ttname"><a href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a></div><div class="ttdeci">size_t terminal_row</div><div class="ttdoc">Текущая строка курсора</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00119">kernel.cpp:119</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a7bb2c25c4aa910dc8f58815dbb3c67dc"><div class="ttname"><a href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a></div><div class="ttdeci">static const size_t VGA_WIDTH</div><div class="ttdoc">Ширина текстового экрана (почти везде по дефолту 80).</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00110">kernel.cpp:110</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00016">outb()</a>, <a class="el" href="kernel_8cpp_source.html#l00123">terminal_color</a>, <a class="el" href="kernel_8cpp_source.html#l00121">terminal_column</a>, <a class="el" href="kernel_8cpp_source.html#l00171">terminal_putentryat()</a>, <a class="el" href="kernel_8cpp_source.html#l00119">terminal_row</a> и <a class="el" href="kernel_8cpp_source.html#l00110">VGA_WIDTH</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2_cgraph.svg" width="363" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_ad2312e60fb89b6d9c2f56b63aa4d59e2_icgraph.svg" width="312" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ac4802010a838e2e4909fe47fc7edbe3e" name="ac4802010a838e2e4909fe47fc7edbe3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4802010a838e2e4909fe47fc7edbe3e">&#9670;&#160;</a></span>terminal_initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_initialize </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Чистим экран при запуске и ставим курсор в начало </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00130">130</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>{</div>
+<div class="line"><span class="lineno">  132</span>    <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> = 0;</div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> = 0;</div>
+<div class="line"><span class="lineno">  134</span>    <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> = <a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d">VGA_COLOR_LIGHT_GREY</a> | (<a class="code hl_enumvalue" href="#abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774">VGA_COLOR_BLACK</a> &lt;&lt; 4);</div>
+<div class="line"><span class="lineno">  135</span>    <a class="code hl_variable" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a> = <a class="code hl_variable" href="#a11d32f6e21e0e40be6b8175a7cc19d6d">VGA_MEMORY</a>;</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> y = 0; y &lt; <a class="code hl_variable" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a>; y++)</div>
+<div class="line"><span class="lineno">  137</span>    {</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> x = 0; x &lt; <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a>; x++)</div>
+<div class="line"><span class="lineno">  139</span>        {</div>
+<div class="line"><span class="lineno">  140</span>            <span class="keyword">const</span> <span class="keywordtype">size_t</span> index = y * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + x;</div>
+<div class="line"><span class="lineno">  141</span>            <span class="comment">// забиваем всё пробелами</span></div>
+<div class="line"><span class="lineno">  142</span>            <a class="code hl_variable" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a>[index] = (uint16_t)<span class="charliteral">&#39; &#39;</span> | (uint16_t)<a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> &lt;&lt; 8;</div>
+<div class="line"><span class="lineno">  143</span>        }</div>
+<div class="line"><span class="lineno">  144</span>    }</div>
+<div class="line"><span class="lineno">  145</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a11d32f6e21e0e40be6b8175a7cc19d6d"><div class="ttname"><a href="#a11d32f6e21e0e40be6b8175a7cc19d6d">VGA_MEMORY</a></div><div class="ttdeci">uint16_t *const VGA_MEMORY</div><div class="ttdoc">Волшебный адрес VGA_MEMORY.</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00116">kernel.cpp:116</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a47e72657e89c79ddc7393b941112a28e"><div class="ttname"><a href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a></div><div class="ttdeci">uint16_t * terminal_buffer</div><div class="ttdoc">Указатель на буфер экрана</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00125">kernel.cpp:125</a></div></div>
+<div class="ttc" id="akernel_8cpp_html_a9d0a1e1ab3a08dc955ddb744de23ab04"><div class="ttname"><a href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a></div><div class="ttdeci">static const size_t VGA_HEIGHT</div><div class="ttdoc">Высота текстового экрана (почти везде по дефолту 25).</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00112">kernel.cpp:112</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00125">terminal_buffer</a>, <a class="el" href="kernel_8cpp_source.html#l00123">terminal_color</a>, <a class="el" href="kernel_8cpp_source.html#l00121">terminal_column</a>, <a class="el" href="kernel_8cpp_source.html#l00119">terminal_row</a>, <a class="el" href="kernel_8cpp_source.html#l00091">VGA_COLOR_BLACK</a>, <a class="el" href="kernel_8cpp_source.html#l00098">VGA_COLOR_LIGHT_GREY</a>, <a class="el" href="kernel_8cpp_source.html#l00112">VGA_HEIGHT</a>, <a class="el" href="kernel_8cpp_source.html#l00116">VGA_MEMORY</a> и <a class="el" href="kernel_8cpp_source.html#l00110">VGA_WIDTH</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_ac4802010a838e2e4909fe47fc7edbe3e_icgraph.svg" width="492" height="64"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a0e77ef8710654966af44f69becffcd80" name="a0e77ef8710654966af44f69becffcd80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e77ef8710654966af44f69becffcd80">&#9670;&#160;</a></span>terminal_putchar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_putchar </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Основная функция печати символа </p>
+<p>Она обрабатывает перевод строки и двигает курсор. </p>
+<ul>
+<li><dl class="section note"><dt>Заметки</dt><dd>Тут магия</dd></dl>
+Говорим видеокарте передвинуть мигающую палочку вслед за текстом.</li>
+</ul>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00181">181</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>{</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) <span class="comment">// если встретили энтер, прыгаем на новую строку</span></div>
+<div class="line"><span class="lineno">  184</span>    {</div>
+<div class="line"><span class="lineno">  185</span>        <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> = 0;</div>
+<div class="line"><span class="lineno">  186</span>        <span class="keywordflow">if</span> (++<a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> == <a class="code hl_variable" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a>)</div>
+<div class="line"><span class="lineno">  187</span>            <a class="code hl_function" href="#a8ab08297307823edbb80b60a6aecabc2">terminal_scroll</a>();</div>
+<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  189</span>    }</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>    <span class="comment">// рисуем символ</span></div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_function" href="#a739860b23b857cf3fc0294ce79c3a896">terminal_putentryat</a>(c, <a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a>, <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a>, <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a>);</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>    <span class="comment">// двигаем координату вправо</span></div>
+<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">if</span> (++<a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> == <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a>)</div>
+<div class="line"><span class="lineno">  196</span>    {</div>
+<div class="line"><span class="lineno">  197</span>        <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a> = 0;</div>
+<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">if</span> (++<a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> == <a class="code hl_variable" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a>)</div>
+<div class="line"><span class="lineno">  199</span>            <a class="code hl_function" href="#a8ab08297307823edbb80b60a6aecabc2">terminal_scroll</a>();</div>
+<div class="line"><span class="lineno">  200</span>    }</div>
+<div class="line"><span class="lineno">  201</span></div>
+<div class="line"><span class="lineno">  205</span>    uint16_t pos = <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + <a class="code hl_variable" href="#a520603ae2a8f2d5cee740e42776cd4a9">terminal_column</a>;</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D4, 0x0F);</div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D5, (uint8_t)(pos &amp; 0xFF));</div>
+<div class="line"><span class="lineno">  208</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D4, 0x0E);</div>
+<div class="line"><span class="lineno">  209</span>    <a class="code hl_function" href="#aa37f5841c54156a4b14fc0d6f626b44f">outb</a>(0x3D5, (uint8_t)((pos &gt;&gt; 8) &amp; 0xFF));</div>
+<div class="line"><span class="lineno">  210</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a8ab08297307823edbb80b60a6aecabc2"><div class="ttname"><a href="#a8ab08297307823edbb80b60a6aecabc2">terminal_scroll</a></div><div class="ttdeci">void terminal_scroll()</div><div class="ttdoc">Скроллинг экрана</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00151">kernel.cpp:151</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00016">outb()</a>, <a class="el" href="kernel_8cpp_source.html#l00123">terminal_color</a>, <a class="el" href="kernel_8cpp_source.html#l00121">terminal_column</a>, <a class="el" href="kernel_8cpp_source.html#l00171">terminal_putentryat()</a>, <a class="el" href="kernel_8cpp_source.html#l00119">terminal_row</a>, <a class="el" href="kernel_8cpp_source.html#l00151">terminal_scroll()</a>, <a class="el" href="kernel_8cpp_source.html#l00112">VGA_HEIGHT</a> и <a class="el" href="kernel_8cpp_source.html#l00110">VGA_WIDTH</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a0e77ef8710654966af44f69becffcd80_cgraph.svg" width="343" height="143"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a0e77ef8710654966af44f69becffcd80_icgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a739860b23b857cf3fc0294ce79c3a896" name="a739860b23b857cf3fc0294ce79c3a896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a739860b23b857cf3fc0294ce79c3a896">&#9670;&#160;</a></span>terminal_putentryat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_putentryat </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вспомогательная штука, чтобы положить символ в конкретную точку экрана </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00171">171</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  172</span>{</div>
+<div class="line"><span class="lineno">  173</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> index = y * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + x;</div>
+<div class="line"><span class="lineno">  174</span>    <a class="code hl_variable" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a>[index] = (uint16_t)c | (uint16_t)color &lt;&lt; 8;</div>
+<div class="line"><span class="lineno">  175</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00125">terminal_buffer</a> и <a class="el" href="kernel_8cpp_source.html#l00110">VGA_WIDTH</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a739860b23b857cf3fc0294ce79c3a896_icgraph.svg" width="100%" height="538"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a8ab08297307823edbb80b60a6aecabc2" name="a8ab08297307823edbb80b60a6aecabc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ab08297307823edbb80b60a6aecabc2">&#9670;&#160;</a></span>terminal_scroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_scroll </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Скроллинг экрана </p>
+<p>Если дошли до низа экрана, надо всё сдвинуть вверх. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00151">151</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> y = 0; y &lt; <a class="code hl_variable" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a> - 1; y++)</div>
+<div class="line"><span class="lineno">  154</span>    {</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> x = 0; x &lt; <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a>; x++)</div>
+<div class="line"><span class="lineno">  156</span>        {</div>
+<div class="line"><span class="lineno">  157</span>            <a class="code hl_variable" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a>[y * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + x] = <a class="code hl_variable" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a>[(y + 1) * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + x];</div>
+<div class="line"><span class="lineno">  158</span>        }</div>
+<div class="line"><span class="lineno">  159</span>    }</div>
+<div class="line"><span class="lineno">  160</span>    <span class="comment">// последнюю строчку чистим</span></div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> x = 0; x &lt; <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a>; x++)</div>
+<div class="line"><span class="lineno">  162</span>    {</div>
+<div class="line"><span class="lineno">  163</span>        <a class="code hl_variable" href="#a47e72657e89c79ddc7393b941112a28e">terminal_buffer</a>[(<a class="code hl_variable" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a> - 1) * <a class="code hl_variable" href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">VGA_WIDTH</a> + x] = (uint16_t)<span class="charliteral">&#39; &#39;</span> | (uint16_t)<a class="code hl_variable" href="#a0165452ad102b2a781847d6616407976">terminal_color</a> &lt;&lt; 8;</div>
+<div class="line"><span class="lineno">  164</span>    }</div>
+<div class="line"><span class="lineno">  165</span>    <a class="code hl_variable" href="#a7b2081d954cde4b480d57878e4b3af58">terminal_row</a> = <a class="code hl_variable" href="#a9d0a1e1ab3a08dc955ddb744de23ab04">VGA_HEIGHT</a> - 1;</div>
+<div class="line"><span class="lineno">  166</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00125">terminal_buffer</a>, <a class="el" href="kernel_8cpp_source.html#l00123">terminal_color</a>, <a class="el" href="kernel_8cpp_source.html#l00119">terminal_row</a>, <a class="el" href="kernel_8cpp_source.html#l00112">VGA_HEIGHT</a> и <a class="el" href="kernel_8cpp_source.html#l00110">VGA_WIDTH</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a8ab08297307823edbb80b60a6aecabc2_icgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="aa1e14319626b81ec4e7d0d28729b1bd7" name="aa1e14319626b81ec4e7d0d28729b1bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1e14319626b81ec4e7d0d28729b1bd7">&#9670;&#160;</a></span>terminal_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_write </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Просто печатаем строку целиком </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00215">215</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  216</span>{</div>
+<div class="line"><span class="lineno">  217</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_function" href="#a008e171a518fe0e0352f31b245e03875">strlen</a>(data); i++)</div>
+<div class="line"><span class="lineno">  218</span>        <a class="code hl_function" href="#a0e77ef8710654966af44f69becffcd80">terminal_putchar</a>(data[i]);</div>
+<div class="line"><span class="lineno">  219</span>}</div>
+<div class="ttc" id="akernel_8cpp_html_a008e171a518fe0e0352f31b245e03875"><div class="ttname"><a href="#a008e171a518fe0e0352f31b245e03875">strlen</a></div><div class="ttdeci">size_t strlen(const char *str)</div><div class="ttdoc">Считаем длину строки</div><div class="ttdef"><b>Определения</b> <a href="kernel_8cpp_source.html#l00049">kernel.cpp:49</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00049">strlen()</a> и <a class="el" href="kernel_8cpp_source.html#l00181">terminal_putchar()</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7_cgraph.svg" width="507" height="143"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_aa1e14319626b81ec4e7d0d28729b1bd7_icgraph.svg" width="100%" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a2d26d2d99d5af0f63735e3069970dfb1" name="a2d26d2d99d5af0f63735e3069970dfb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d26d2d99d5af0f63735e3069970dfb1">&#9670;&#160;</a></span>terminal_writeln()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void terminal_writeln </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печать строки с переходом на новую </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00224">224</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  225</span>{</div>
+<div class="line"><span class="lineno">  226</span>    <a class="code hl_function" href="#aa1e14319626b81ec4e7d0d28729b1bd7">terminal_write</a>(data);</div>
+<div class="line"><span class="lineno">  227</span>    <a class="code hl_function" href="#a0e77ef8710654966af44f69becffcd80">terminal_putchar</a>(<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><span class="lineno">  228</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Перекрестные ссылки <a class="el" href="kernel_8cpp_source.html#l00181">terminal_putchar()</a> и <a class="el" href="kernel_8cpp_source.html#l00215">terminal_write()</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1_cgraph.svg" width="100%" height="407"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="kernel_8cpp_a2d26d2d99d5af0f63735e3069970dfb1_icgraph.svg" width="643" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Переменные</h2>
+<a id="a2eafa31c0fdd24b7c2acf8d9547767b5" name="a2eafa31c0fdd24b7c2acf8d9547767b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eafa31c0fdd24b7c2acf8d9547767b5">&#9670;&#160;</a></span>cmd_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char cmd_buffer[128]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00316">316</a></p>
+
+</div>
+</div>
+<a id="adbfc6f7934b1232f3d68253d0e93a339" name="adbfc6f7934b1232f3d68253d0e93a339"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbfc6f7934b1232f3d68253d0e93a339">&#9670;&#160;</a></span>cmd_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cmd_len = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Длина текущей введенной команды </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00318">318</a></p>
+
+</div>
+</div>
+<a id="acfe5583915d0a47629102cfd37b14c3d" name="acfe5583915d0a47629102cfd37b14c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfe5583915d0a47629102cfd37b14c3d">&#9670;&#160;</a></span>kbd_US</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char kbd_US[128]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Инициализатор</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    0, 27, <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span>, <span class="charliteral">&#39;5&#39;</span>, <span class="charliteral">&#39;6&#39;</span>, <span class="charliteral">&#39;7&#39;</span>, <span class="charliteral">&#39;8&#39;</span>, <span class="charliteral">&#39;9&#39;</span>, <span class="charliteral">&#39;0&#39;</span>, <span class="charliteral">&#39;-&#39;</span>, <span class="charliteral">&#39;=&#39;</span>, <span class="charliteral">&#39;\b&#39;</span>,</div>
+<div class="line">    <span class="charliteral">&#39;\t&#39;</span>, <span class="charliteral">&#39;q&#39;</span>, <span class="charliteral">&#39;w&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;r&#39;</span>, <span class="charliteral">&#39;t&#39;</span>, <span class="charliteral">&#39;y&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="charliteral">&#39;[&#39;</span>, <span class="charliteral">&#39;]&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>,</div>
+<div class="line">    0, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;f&#39;</span>, <span class="charliteral">&#39;g&#39;</span>, <span class="charliteral">&#39;h&#39;</span>, <span class="charliteral">&#39;j&#39;</span>, <span class="charliteral">&#39;k&#39;</span>, <span class="charliteral">&#39;l&#39;</span>, <span class="charliteral">&#39;;&#39;</span>, <span class="charliteral">&#39;\&#39;&#39;</span>, <span class="charliteral">&#39;`&#39;</span>, 0,</div>
+<div class="line">    <span class="charliteral">&#39;\\&#39;</span>, <span class="charliteral">&#39;z&#39;</span>, <span class="charliteral">&#39;x&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;v&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;n&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;,&#39;</span>, <span class="charliteral">&#39;.&#39;</span>, <span class="charliteral">&#39;/&#39;</span>, 0, <span class="charliteral">&#39;*&#39;</span>, 0, <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line">    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, <span class="charliteral">&#39;-&#39;</span>, 0, 0, 0, <span class="charliteral">&#39;+&#39;</span>, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</div>
+</div><!-- fragment -->
+<p>Карта клавиш </p>
+<p>Железо присылает номер кнопки, а мы превращаем его в букву. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00259">259</a></p>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>                   {</div>
+<div class="line"><span class="lineno">  260</span>    0, 27, <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span>, <span class="charliteral">&#39;5&#39;</span>, <span class="charliteral">&#39;6&#39;</span>, <span class="charliteral">&#39;7&#39;</span>, <span class="charliteral">&#39;8&#39;</span>, <span class="charliteral">&#39;9&#39;</span>, <span class="charliteral">&#39;0&#39;</span>, <span class="charliteral">&#39;-&#39;</span>, <span class="charliteral">&#39;=&#39;</span>, <span class="charliteral">&#39;\b&#39;</span>,</div>
+<div class="line"><span class="lineno">  261</span>    <span class="charliteral">&#39;\t&#39;</span>, <span class="charliteral">&#39;q&#39;</span>, <span class="charliteral">&#39;w&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;r&#39;</span>, <span class="charliteral">&#39;t&#39;</span>, <span class="charliteral">&#39;y&#39;</span>, <span class="charliteral">&#39;u&#39;</span>, <span class="charliteral">&#39;i&#39;</span>, <span class="charliteral">&#39;o&#39;</span>, <span class="charliteral">&#39;p&#39;</span>, <span class="charliteral">&#39;[&#39;</span>, <span class="charliteral">&#39;]&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>,</div>
+<div class="line"><span class="lineno">  262</span>    0, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;s&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;f&#39;</span>, <span class="charliteral">&#39;g&#39;</span>, <span class="charliteral">&#39;h&#39;</span>, <span class="charliteral">&#39;j&#39;</span>, <span class="charliteral">&#39;k&#39;</span>, <span class="charliteral">&#39;l&#39;</span>, <span class="charliteral">&#39;;&#39;</span>, <span class="charliteral">&#39;\&#39;&#39;</span>, <span class="charliteral">&#39;`&#39;</span>, 0,</div>
+<div class="line"><span class="lineno">  263</span>    <span class="charliteral">&#39;\\&#39;</span>, <span class="charliteral">&#39;z&#39;</span>, <span class="charliteral">&#39;x&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;v&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;n&#39;</span>, <span class="charliteral">&#39;m&#39;</span>, <span class="charliteral">&#39;,&#39;</span>, <span class="charliteral">&#39;.&#39;</span>, <span class="charliteral">&#39;/&#39;</span>, 0, <span class="charliteral">&#39;*&#39;</span>, 0, <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line"><span class="lineno">  264</span>    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, <span class="charliteral">&#39;-&#39;</span>, 0, 0, 0, <span class="charliteral">&#39;+&#39;</span>, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a47e72657e89c79ddc7393b941112a28e" name="a47e72657e89c79ddc7393b941112a28e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47e72657e89c79ddc7393b941112a28e">&#9670;&#160;</a></span>terminal_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t* terminal_buffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Указатель на буфер экрана </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00125">125</a></p>
+
+</div>
+</div>
+<a id="a0165452ad102b2a781847d6616407976" name="a0165452ad102b2a781847d6616407976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0165452ad102b2a781847d6616407976">&#9670;&#160;</a></span>terminal_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t terminal_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Текущий цвет текста </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00123">123</a></p>
+
+</div>
+</div>
+<a id="a520603ae2a8f2d5cee740e42776cd4a9" name="a520603ae2a8f2d5cee740e42776cd4a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520603ae2a8f2d5cee740e42776cd4a9">&#9670;&#160;</a></span>terminal_column</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t terminal_column</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Текущий столбец курсора </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00121">121</a></p>
+
+</div>
+</div>
+<a id="a7b2081d954cde4b480d57878e4b3af58" name="a7b2081d954cde4b480d57878e4b3af58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b2081d954cde4b480d57878e4b3af58">&#9670;&#160;</a></span>terminal_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t terminal_row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Текущая строка курсора </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00119">119</a></p>
+
+</div>
+</div>
+<a id="a9d0a1e1ab3a08dc955ddb744de23ab04" name="a9d0a1e1ab3a08dc955ddb744de23ab04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d0a1e1ab3a08dc955ddb744de23ab04">&#9670;&#160;</a></span>VGA_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t VGA_HEIGHT = 25</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Высота текстового экрана (почти везде по дефолту 25). </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00112">112</a></p>
+
+</div>
+</div>
+<a id="a11d32f6e21e0e40be6b8175a7cc19d6d" name="a11d32f6e21e0e40be6b8175a7cc19d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11d32f6e21e0e40be6b8175a7cc19d6d">&#9670;&#160;</a></span>VGA_MEMORY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t* const VGA_MEMORY = (uint16_t *)0xB8000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Волшебный адрес VGA_MEMORY. </p>
+<ul>
+<li></li>
+</ul>
+<p>Сюда надо писать буквы, чтобы они появились на мониторе. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00116">116</a></p>
+
+</div>
+</div>
+<a id="a7bb2c25c4aa910dc8f58815dbb3c67dc" name="a7bb2c25c4aa910dc8f58815dbb3c67dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bb2c25c4aa910dc8f58815dbb3c67dc">&#9670;&#160;</a></span>VGA_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t VGA_WIDTH = 80</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ширина текстового экрана (почти везде по дефолту 80). </p>
+
+<p class="definition">См. определение в файле <a class="el" href="kernel_8cpp_source.html">kernel.cpp</a> строка <a class="el" href="kernel_8cpp_source.html#l00110">110</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="kernel_8cpp.html">kernel.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

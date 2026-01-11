@@ -1,0 +1,38 @@
+\doxysection{boot.\+asm}
+\hypertarget{boot_8asm_source}{}\label{boot_8asm_source}\mbox{\hyperlink{boot_8asm}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00001}00001\ ;\ boot.asm}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00003}00003\ bits\ 32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00005}00005\ MBALIGN\ \ equ\ \ 1\ <<\ 0\ \ \ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00006}00006\ MEMINFO\ \ equ\ \ 1\ <<\ 1\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00007}00007\ FLAGS\ \ \ \ equ\ \ MBALIGN\ |\ MEMINFO}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00008}00008\ MAGIC\ \ \ \ equ\ \ 0x1BADB002}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00009}00009\ CHECKSUM\ equ\ -\/(MAGIC\ +\ FLAGS)}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00011}00011\ section\ .multiboot}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00012}00012\ align\ 4}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00013}00013\ \ \ \ \ dd\ MAGIC}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00014}00014\ \ \ \ \ dd\ FLAGS}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00015}00015\ \ \ \ \ dd\ CHECKSUM}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00017}00017\ section\ .bss}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00018}00018\ align\ 16}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00019}00019\ stack\_bottom:}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00020}00020\ resb\ 16384}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00021}00021\ stack\_top:}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00023}00023\ section\ .text}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00024}00024\ global\ \_start}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00025}00025\ extern\ kernel\_main}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00027}00027\ \_start:}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00028}00028\ \ \ \ \ mov\ esp,\ stack\_top\ }
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00029}00029\ \ \ \ \ call\ kernel\_main}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00030}00030\ \ \ \ \ cli}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00031}00031\ .hang:}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00032}00032\ \ \ \ \ hlt}
+\DoxyCodeLine{\Hypertarget{boot_8asm_source_l00033}00033\ \ \ \ \ jmp\ .hang}
+
+\end{DoxyCode}

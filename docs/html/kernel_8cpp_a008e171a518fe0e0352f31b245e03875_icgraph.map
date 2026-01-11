@@ -1,0 +1,17 @@
+<map id="strlen" name="strlen">
+<area shape="rect" id="Node000001" title="Считаем длину строки" alt="" coords="849,10,907,38"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#aa1e14319626b81ec4e7d0d28729b1bd7" title="Просто печатаем строку целиком" alt="" coords="685,10,801,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="831,24,801,27,801,22,836,24"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#a442779c3d179241fe843c474fe6d1b13" title="Наш обработчик команд" alt="" coords="155,61,299,89"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="667,26,521,35,347,52,288,63,287,58,347,47,520,30,672,25"/>
+<area shape="rect" id="Node000004" href="$kernel_8cpp.html#a6b8fb674fb359f6ae53dc9c4fb7fc6be" title="Точка входа в ядро" alt="" coords="5,61,107,89"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="667,14,636,14,501,8,395,13,289,27,155,52,108,63,106,58,154,47,288,22,394,7,501,3,637,8,672,14"/>
+<area shape="rect" id="Node000005" href="$kernel_8cpp.html#a2d26d2d99d5af0f63735e3069970dfb1" title="Печать строки с переходом на новую" alt="" coords="508,86,637,114"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="698,44,606,88,605,83,693,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,76,107,78,107,72,142,74"/>
+<area shape="poly" id="edge8_Node000005_Node000003" title=" " alt="" coords="490,104,421,107,347,103,284,92,284,87,347,98,422,102,495,104"/>
+<area shape="poly" id="edge9_Node000005_Node000004" title=" " alt="" coords="495,108,460,112,307,117,240,114,154,103,105,92,105,87,155,98,240,108,307,112,460,107,490,108"/>
+<area shape="rect" id="Node000006" href="$kernel_8cpp.html#aaa57a37d172e6161a88e431f469cebd4" title="Попытка выключить комп" alt="" coords="347,61,460,89"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="490,88,460,86,461,81,496,88"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="329,75,299,78,299,72,334,75"/>
+</map>

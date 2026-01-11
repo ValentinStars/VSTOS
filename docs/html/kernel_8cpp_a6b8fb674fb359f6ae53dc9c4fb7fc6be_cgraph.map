@@ -1,0 +1,47 @@
+<map id="kernel_main" name="kernel_main">
+<area shape="rect" id="Node000001" title="Точка входа в ядро" alt="" coords="5,297,107,324"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#a442779c3d179241fe843c474fe6d1b13" title="Наш обработчик команд" alt="" coords="155,297,299,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,308,141,309,137,312,108,313"/>
+<area shape="rect" id="Node000004" href="$kernel_8cpp.html#a0223c8898dfec29069879dc51076e28a" title="Забирает байт из порта" alt="" coords="578,449,619,476"/>
+<area shape="poly" id="edge22_Node000001_Node000004" title=" " alt="" coords="63,322,96,393,123,433,156,469,203,502,244,519,290,529,347,539,418,550,448,548,485,539,510,529,533,515,570,488,575,486,536,519,512,533,487,544,449,553,417,555,347,544,289,534,243,524,200,506,153,473,119,437,92,395,62,327"/>
+<area shape="rect" id="Node000007" href="$kernel_8cpp.html#a2d26d2d99d5af0f63735e3069970dfb1" title="Печать строки с переходом на новую" alt="" coords="534,144,663,171"/>
+<area shape="poly" id="edge29_Node000001_Node000007" title=" " alt="" coords="74,295,119,262,184,221,262,181,304,164,346,151,390,143,435,140,521,145,517,147,435,145,391,148,348,156,306,169,265,185,187,225,122,266,78,298"/>
+<area shape="rect" id="Node000008" href="$kernel_8cpp.html#a0e77ef8710654966af44f69becffcd80" title="Основная функция печати символа" alt="" coords="885,169,1017,196"/>
+<area shape="poly" id="edge27_Node000001_Node000008" title=" " alt="" coords="60,295,92,223,119,179,153,140,215,80,270,37,299,22,332,11,370,5,415,3,600,3,650,7,700,20,748,39,793,61,870,112,926,159,921,158,867,116,790,66,746,43,698,25,649,13,600,8,415,8,371,10,333,16,301,27,273,42,219,84,157,143,124,182,97,226,65,297"/>
+<area shape="rect" id="Node000011" href="$kernel_8cpp.html#aa1e14319626b81ec4e7d0d28729b1bd7" title="Просто печатаем строку целиком" alt="" coords="711,194,827,222"/>
+<area shape="poly" id="edge28_Node000001_Node000011" title=" " alt="" coords="62,295,96,241,122,210,153,183,202,155,245,141,347,127,515,126,663,129,709,153,746,184,741,183,706,157,662,135,515,132,347,132,246,146,204,160,156,188,126,213,101,244,67,297"/>
+<area shape="rect" id="Node000015" href="$kernel_8cpp.html#ac4802010a838e2e4909fe47fc7edbe3e" title="Чистим экран при запуске и ставим курсор в начало" alt="" coords="347,502,486,530"/>
+<area shape="poly" id="edge26_Node000001_Node000015" title=" " alt="" coords="77,322,156,378,250,436,348,487,364,496,359,496,346,492,247,441,153,382,76,328"/>
+<area shape="rect" id="Node000016" href="$kernel_8cpp.html#ad2312e60fb89b6d9c2f56b63aa4d59e2" title="Стираем последний символ" alt="" coords="875,348,1027,375"/>
+<area shape="poly" id="edge23_Node000001_Node000016" title=" " alt="" coords="106,323,155,333,285,354,415,359,600,359,862,361,857,362,600,364,415,364,284,359,154,339,107,328"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#ad9bf988ef2e66fe9a42d30d504c32d13" title="Управление лампочками на клаве" alt="" coords="378,450,455,478"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,322,284,377,314,408,348,435,367,447,361,447,346,440,311,412,280,380,237,327"/>
+<area shape="rect" id="Node000006" href="$kernel_8cpp.html#aaa57a37d172e6161a88e431f469cebd4" title="Попытка выключить комп" alt="" coords="360,297,473,324"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="299,308,347,310,342,312,300,313"/>
+<area shape="poly" id="edge21_Node000002_Node000007" title=" " alt="" coords="235,295,278,241,309,211,346,187,388,170,433,160,521,153,517,156,434,165,390,175,348,192,313,215,282,244,239,298"/>
+<area shape="poly" id="edge20_Node000002_Node000011" title=" " alt="" coords="242,294,287,261,315,244,346,231,438,209,533,198,621,196,697,201,692,202,621,201,533,204,439,214,348,236,318,249,290,265,246,298"/>
+<area shape="rect" id="Node000013" href="$kernel_8cpp.html#a459bbb389bab6b225523f3a336301395" title="Жесткий метод перезагрузки" alt="" coords="368,398,466,426"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="255,322,378,390,373,392,254,328"/>
+<area shape="rect" id="Node000014" href="$kernel_8cpp.html#a166db80b274b2f9d796babb771e0ef85" title="Сравниваем две строки" alt="" coords="384,245,450,272"/>
+<area shape="poly" id="edge18_Node000002_Node000014" title=" " alt="" coords="279,294,371,270,366,273,281,299"/>
+<area shape="poly" id="edge19_Node000002_Node000015" title=" " alt="" coords="235,322,252,357,276,400,309,447,349,487,357,495,352,494,345,491,305,450,272,403,247,359,233,327"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="455,461,565,463,560,463,455,466"/>
+<area shape="rect" id="Node000005" href="$kernel_8cpp.html#aa37f5841c54156a4b14fc0d6f626b44f" title="Это наши &quot;руки&quot; для работы с портами" alt="" coords="1126,348,1176,375"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="456,471,535,485,599,490,662,485,766,472,847,456,1027,404,1109,378,1114,376,1028,409,848,461,767,477,663,491,599,495,534,491,455,476"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="473,307,715,311,871,319,1028,333,1113,351,1108,352,1027,339,870,324,715,316,474,313"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="463,294,485,282,513,259,538,232,578,186,582,182,542,236,517,263,488,286,465,299"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="663,159,872,176,867,178,664,165"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="647,169,708,189,703,190,648,174"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="1007,194,1029,207,1047,225,1056,243,1064,261,1077,282,1126,337,1121,336,1073,286,1060,264,1051,245,1042,229,1026,211,1006,200"/>
+<area shape="rect" id="Node000009" href="$kernel_8cpp.html#a739860b23b857cf3fc0294ce79c3a896" title="Вспомогательная штука, чтобы положить символ в конкретную точку экрана" alt="" coords="1075,245,1227,272"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="994,194,1028,207,1104,239,1098,239,1026,212,994,200"/>
+<area shape="rect" id="Node000010" href="$kernel_8cpp.html#a8ab08297307823edbb80b60a6aecabc2" title="Скроллинг экрана" alt="" coords="1092,169,1210,196"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="1017,180,1079,182,1074,183,1018,185"/>
+<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="827,197,873,193,868,195,828,202"/>
+<area shape="rect" id="Node000012" href="$kernel_8cpp.html#a008e171a518fe0e0352f31b245e03875" title="Считаем длину строки" alt="" coords="922,221,980,248"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="827,214,909,228,904,229,828,219"/>
+<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="467,423,566,453,560,453,466,428"/>
+<area shape="poly" id="edge17_Node000013_Node000005" title=" " alt="" coords="466,410,708,407,866,399,1027,384,1108,372,1113,371,1028,389,867,404,708,412,467,415"/>
+<area shape="poly" id="edge24_Node000016_Node000005" title=" " alt="" coords="1027,359,1113,361,1108,362,1028,364"/>
+<area shape="poly" id="edge25_Node000016_Node000009" title=" " alt="" coords="979,344,1106,281,1111,279,981,349"/>
+</map>

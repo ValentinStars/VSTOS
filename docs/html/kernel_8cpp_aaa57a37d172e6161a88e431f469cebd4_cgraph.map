@@ -1,0 +1,19 @@
+<map id="cmd_poweroff" name="cmd_poweroff">
+<area shape="rect" id="Node000001" title="Попытка выключить комп" alt="" coords="5,32,119,60"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#aa37f5841c54156a4b14fc0d6f626b44f" title="Это наши &quot;руки&quot; для работы с портами" alt="" coords="738,5,788,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,41,723,18,722,23,120,46"/>
+<area shape="rect" id="Node000003" href="$kernel_8cpp.html#a2d26d2d99d5af0f63735e3069970dfb1" title="Печать строки с переходом на новую" alt="" coords="167,57,295,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,52,154,58,149,60,119,57"/>
+<area shape="rect" id="Node000004" href="$kernel_8cpp.html#a0e77ef8710654966af44f69becffcd80" title="Основная функция печати символа" alt="" coords="507,57,640,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="295,69,494,70,489,72,295,74"/>
+<area shape="rect" id="Node000007" href="$kernel_8cpp.html#aa1e14319626b81ec4e7d0d28729b1bd7" title="Просто печатаем строку целиком" alt="" coords="343,108,459,136"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="280,83,341,103,335,103,279,88"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="626,54,721,30,726,29,628,59"/>
+<area shape="rect" id="Node000005" href="$kernel_8cpp.html#a739860b23b857cf3fc0294ce79c3a896" title="Вспомогательная штука, чтобы положить символ в конкретную точку экрана" alt="" coords="688,57,839,85"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="640,69,675,71,670,71,640,74"/>
+<area shape="rect" id="Node000006" href="$kernel_8cpp.html#a8ab08297307823edbb80b60a6aecabc2" title="Скроллинг экрана" alt="" coords="704,109,822,137"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="627,83,698,105,693,105,627,88"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="450,105,507,90,512,89,451,110"/>
+<area shape="rect" id="Node000008" href="$kernel_8cpp.html#a008e171a518fe0e0352f31b245e03875" title="Считаем длину строки" alt="" coords="544,109,603,137"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="460,120,531,123,526,123,460,125"/>
+</map>

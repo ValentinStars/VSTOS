@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['vga_5fcolor_5fblack_0',['VGA_COLOR_BLACK',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea0c4db2001081cecf298a1d4b486b4774',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fblue_1',['VGA_COLOR_BLUE',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea663b039a56cc4b0ae428764bd2912805',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fbrown_2',['VGA_COLOR_BROWN',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60eaa869dc9cc937e8d352256ee9690df7fe',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fcyan_3',['VGA_COLOR_CYAN',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60eaf811c6bc13218b06e6201ad2ecbe18ab',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fdark_5fgrey_4',['VGA_COLOR_DARK_GREY',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60eafd7a6c9325375205fced9399bc887e68',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fgreen_5',['VGA_COLOR_GREEN',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea12f823154fcee6a5c8c007d4bb5ab487',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fblue_6',['VGA_COLOR_LIGHT_BLUE',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ead606acb105ca29c2a9f06e442ea0b282',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fbrown_7',['VGA_COLOR_LIGHT_BROWN',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea87c60d255573db6b4aaf1decb5d9b694',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fcyan_8',['VGA_COLOR_LIGHT_CYAN',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ead32d8cd20a9c1ea28b62f4b7e24fa21d',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fgreen_9',['VGA_COLOR_LIGHT_GREEN',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea61eadb3e52ca16b9afcc038c7879625f',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fgrey_10',['VGA_COLOR_LIGHT_GREY',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea36e7ce11635728c6d1f64a8e08da191d',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fmagenta_11',['VGA_COLOR_LIGHT_MAGENTA',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea38ca76ebc37b2560aac48ad71537ef97',1,'kernel.cpp']]],
+  ['vga_5fcolor_5flight_5fred_12',['VGA_COLOR_LIGHT_RED',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60eaecca7b3f9042b169a6242b3de521a97d',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fmagenta_13',['VGA_COLOR_MAGENTA',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea6a50a13f4692c36dc03904c057f214ee',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fred_14',['VGA_COLOR_RED',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60ea7215ff578d3469daf8bb697a60ad1836',1,'kernel.cpp']]],
+  ['vga_5fcolor_5fwhite_15',['VGA_COLOR_WHITE',['../kernel_8cpp.html#abaae057bae62d0c3e11501e3199cb60eaae9cfca3c12a1185029c7feabd331f7a',1,'kernel.cpp']]]
+];

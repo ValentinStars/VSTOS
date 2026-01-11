@@ -1,0 +1,5 @@
+<map id="io_wait" name="io_wait">
+<area shape="rect" id="Node000001" title="Маленькая задержка" alt="" coords="5,5,74,33"/>
+<area shape="rect" id="Node000002" href="$kernel_8cpp.html#aa37f5841c54156a4b14fc0d6f626b44f" title="Это наши &quot;руки&quot; для работы с портами" alt="" coords="122,5,172,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,17,109,19,103,20,74,22"/>
+</map>
