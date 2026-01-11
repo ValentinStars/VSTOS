@@ -1,17 +1,29 @@
-// kernel.cpp
-// так, ну погнали. Это сердце нашей операционки.
-// в начале стандартно подключаем типы, чтобы не гадать, сколько байт в инте
+/**
+ * @file kernel.cpp
+ * @brief Сердце нашей операционки.
+ * @details так, ну погнали. Это основной файл ядра.
+ */
+
 #include <stddef.h>
 #include <stdint.h>
 
-// это наши "руки" для работы с портами, процессор общается с железками через них
-// вот эта штука шлет байт в порт, например, скомандовать клавиатуре мигнуть лампочкой
+/**
+ * @brief Это наши "руки" для работы с портами
+ * @details Процессор общается с железками через них.
+ * @param port Порт устройства
+ * @param val Байт, который шлем (например, скомандовать клавиатуре мигнуть лампочкой)
+ */
 static inline void outb(uint16_t port, uint8_t val)
 {
     asm volatile("outb %0, %1" : : "a"(val), "Nd"(port));
 }
 
-// а эта наоборот - забирает байт. так мы узнаем, какую клавишу нажали
+/**
+ * @brief Забирает байт из порта
+ * @details Так мы узнаем, какую клавишу нажали.
+ * @param port Порт устройства
+ * @return Считанный байт
+ */
 static inline uint8_t inb(uint16_t port)
 {
     uint8_t ret;
@@ -19,13 +31,21 @@ static inline uint8_t inb(uint16_t port)
     return ret;
 }
 
-// маленькая задержка, иногда железо слишком медленное для проца
+/**
+ * @brief Маленькая задержка
+ * @details Иногда железо слишком медленное для проца.
+ */
 static inline void io_wait(void)
 {
     outb(0x80, 0);
 }
 
-// считаем длину строки, пока нет стандартной библиотеки, пишем всё сами
+/**
+ * @brief Считаем длину строки
+ * @details Пока нет стандартной библиотеки, пишем всё сами.
+ * @param str Указатель на строку
+ * @return Количество символов
+ */
 size_t strlen(const char *str)
 {
     size_t len = 0;
@@ -34,7 +54,11 @@ size_t strlen(const char *str)
     return len;
 }
 
-// сравниваем две строки: чтобы понимать, какую команду ввел юзер
+/**
+ * @brief Сравниваем две строки
+ * @details Чтобы понимать, какую команду ввел юзер.
+ * @return true если строки одинаковые
+ */
 bool strcmp(const char *s1, const char *s2)
 {
     while (*s1 && (*s1 == *s2))
@@ -45,7 +69,12 @@ bool strcmp(const char *s1, const char *s2)
     return *s1 == *s2;
 }
 
-// просто забиваем кусок памяти нужным символом
+/**
+ * @brief Просто забиваем кусок памяти нужным символом
+ * @param dest Адрес начала
+ * @param val Чем забиваем
+ * @param count Сколько байт
+ */
 void memset(void *dest, char val, size_t count)
 {
     char *temp = (char *)dest;
@@ -53,7 +82,10 @@ void memset(void *dest, char val, size_t count)
         *temp++ = val;
 }
 
-// таблица цветов для VGA, стандартные 16 цветов из эпохи DOS
+/**
+ * @brief Таблица цветов для VGA
+ * @details Стандартные 16 цветов из эпохи DOS.
+ */
 enum vga_color
 {
     VGA_COLOR_BLACK = 0,
@@ -74,19 +106,27 @@ enum vga_color
     VGA_COLOR_WHITE = 15,
 };
 
-// размеры текстового экрана. почти везде по дефолту 80 на 25
-// 0xB8000 это волшебный адрес, куда надо писать буквы, чтобы они появились на мониторе
+/// Ширина текстового экрана (почти везде по дефолту 80)
 static const size_t VGA_WIDTH = 80;
+/// Высота текстового экрана (почти везде по дефолту 25)
 static const size_t VGA_HEIGHT = 25;
+/** * @brief Волшебный адрес VGA_MEMORY
+ * @details Сюда надо писать буквы, чтобы они появились на мониторе.
+ */
 uint16_t *const VGA_MEMORY = (uint16_t *)0xB8000;
 
-// состояние нашего "терминала": где сейчас курсор и какой цвет текста
+/// Текущая строка курсора
 size_t terminal_row;
+/// Текущий столбец курсора
 size_t terminal_column;
+/// Текущий цвет текста
 uint8_t terminal_color;
+/// Указатель на буфер экрана
 uint16_t *terminal_buffer;
 
-// чистим экран при запуске и ставим курсор в начало
+/**
+ * @brief Чистим экран при запуске и ставим курсор в начало
+ */
 void terminal_initialize(void)
 {
     terminal_row = 0;
@@ -104,7 +144,10 @@ void terminal_initialize(void)
     }
 }
 
-// если дошли до низа экрана, надо всё сдвинуть вверх
+/**
+ * @brief Скроллинг экрана
+ * @details Если дошли до низа экрана, надо всё сдвинуть вверх.
+ */
 void terminal_scroll()
 {
     for (size_t y = 0; y < VGA_HEIGHT - 1; y++)
@@ -122,14 +165,19 @@ void terminal_scroll()
     terminal_row = VGA_HEIGHT - 1;
 }
 
-// вспомогательная штука, чтобы положить символ в конкретную точку экрана
+/**
+ * @brief Вспомогательная штука, чтобы положить символ в конкретную точку экрана
+ */
 void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
 {
     const size_t index = y * VGA_WIDTH + x;
     terminal_buffer[index] = (uint16_t)c | (uint16_t)color << 8;
 }
 
-// основная функция печати символа, она обрабатывает перевод строки и двигает курсор
+/**
+ * @brief Основная функция печати символа
+ * @details Она обрабатывает перевод строки и двигает курсор.
+ */
 void terminal_putchar(char c)
 {
     if (c == '\n') // если встретили энтер, прыгаем на новую строку
@@ -139,10 +187,10 @@ void terminal_putchar(char c)
             terminal_scroll();
         return;
     }
-    
+
     // рисуем символ
     terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
-    
+
     // двигаем координату вправо
     if (++terminal_column == VGA_WIDTH)
     {
@@ -150,8 +198,10 @@ void terminal_putchar(char c)
         if (++terminal_row == VGA_HEIGHT)
             terminal_scroll();
     }
-    
-    // тут магия, говорим видеокарте передвинуть мигающую палочку вслед за текстом
+
+    /** * @note Тут магия
+     * @details Говорим видеокарте передвинуть мигающую палочку вслед за текстом.
+     */
     uint16_t pos = terminal_row * VGA_WIDTH + terminal_column;
     outb(0x3D4, 0x0F);
     outb(0x3D5, (uint8_t)(pos & 0xFF));
@@ -159,21 +209,28 @@ void terminal_putchar(char c)
     outb(0x3D5, (uint8_t)((pos >> 8) & 0xFF));
 }
 
-// просто печатаем строку целиком
+/**
+ * @brief Просто печатаем строку целиком
+ */
 void terminal_write(const char *data)
 {
     for (size_t i = 0; i < strlen(data); i++)
         terminal_putchar(data[i]);
 }
 
-// то же самое, но в конце добавляем переход на новую строку
+/**
+ * @brief Печать строки с переходом на новую
+ */
 void terminal_writeln(const char *data)
 {
     terminal_write(data);
     terminal_putchar('\n');
 }
 
-// стираем последний символ. нужно для работы Backspac
+/**
+ * @brief Стираем последний символ
+ * @details Нужно для работы Backspace.
+ */
 void terminal_backspace()
 {
     if (terminal_column == 0 && terminal_row > 0)
@@ -195,16 +252,21 @@ void terminal_backspace()
     }
 }
 
-// карта клавиш, железо присылает номер кнопки, а мы превращаем его в букву
+/**
+ * @brief Карта клавиш
+ * @details Железо присылает номер кнопки, а мы превращаем его в букву.
+ */
 char kbd_US[128] = {
-    0,  27, '1', '2', '3', '4', '5', '6', '7', '8',	'9', '0', '-', '=', '\b',	
-    '\t', 'q', 'w', 'e', 'r',	't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n',	
-    0, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',	'\'', '`', 0,		
-    '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/',   0, '*', 0, ' ',	
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-', 0, 0, 0, '+', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-};
+    0, 27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '\b',
+    '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n',
+    0, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0,
+    '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' ',
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '-', 0, 0, 0, '+', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-// жесткий метод перезагрузки через контроллер клавиатуры
+/**
+ * @brief Жесткий метод перезагрузки
+ * @details Через контроллер клавиатуры.
+ */
 void cmd_reboot()
 {
     uint8_t temp;
@@ -219,7 +281,10 @@ void cmd_reboot()
     asm volatile("hlt");
 }
 
-// попытка выключить комп. работает в эмуляторах типа QEMU
+/**
+ * @brief Попытка выключить комп
+ * @details Работает в эмуляторах типа QEMU.
+ */
 void cmd_poweroff()
 {
     outb(0x604, 0x2000);
@@ -229,7 +294,10 @@ void cmd_poweroff()
     asm volatile("hlt");
 }
 
-// управление лампочками на клаве (CapsLock, NumLock и т.д.)
+/**
+ * @brief Управление лампочками на клаве
+ * @details CapsLock, NumLock и т.д.
+ */
 void cmd_led(int status)
 {
     while ((inb(0x64) & 2) != 0)
@@ -244,14 +312,18 @@ void cmd_led(int status)
         outb(0x60, 0x00); // погасить всё
 }
 
-// буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер
+/// Буфер, куда мы записываем то, что печатает юзер, пока он не нажмет энтер
 char cmd_buffer[128];
+/// Длина текущей введенной команды
 int cmd_len = 0;
 
-// наш обработчик команд это простейший парсер
+/**
+ * @brief Наш обработчик команд
+ * @details Это простейший парсер ввода.
+ */
 void execute_command()
 {
-    terminal_writeln(""); 
+    terminal_writeln("");
     if (cmd_len == 0)
         return;
 
@@ -324,7 +396,10 @@ void execute_command()
     terminal_write("> ");
 }
 
-// точка входа, именно сюда GRUB передаст управление
+/**
+ * @brief Точка входа в ядро
+ * @details Именно сюда GRUB передаст управление после загрузки.
+ */
 extern "C" void kernel_main(void)
 {
     // стартуем экран
@@ -337,13 +412,13 @@ extern "C" void kernel_main(void)
     terminal_writeln("------------------------------");
     terminal_color = VGA_COLOR_LIGHT_GREY;
     terminal_write("> ");
-    
+
     // основной цикл, тут и живет система
     while (1)
     {
         // опрашиваем порт клавиатуры на нажатие чего либо
         if (inb(0x64) & 1)
-        { 
+        {
             uint8_t scancode = inb(0x60);
 
             // если старший бит 1, значит клавишу отпустили, нам это пока не интересно
